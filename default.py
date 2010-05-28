@@ -4,9 +4,9 @@ import os
 import xbmc
 import xbmcgui
 
-__scriptname__ = "Transmission"
-__author__ = "Correl"
-__url__ = ""
+__scriptname__ = "Transmission-XBMC"
+__author__ = "Correl Roush <correl@gmail.com>"
+__url__ = "http://github.com/correl/Transmission-XBMC"
 __svn_url__ = ""
 __credits__ = ""
 __version__ = "0.5a"
