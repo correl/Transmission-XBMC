@@ -44,7 +44,7 @@
 				<posx>0</posx>
 				<posy>0</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -58,7 +58,7 @@
 				<posx>0</posx>
 				<posy>70</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -72,7 +72,7 @@
 				<posx>0</posx>
 				<posy>150</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -86,7 +86,7 @@
 				<posx>0</posx>
 				<posy>220</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -100,7 +100,7 @@
 				<posx>0</posx>
 				<posy>300</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -114,7 +114,7 @@
 				<posx>0</posx>
 				<posy>370</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -128,7 +128,7 @@
 				<posx>0</posx>
 				<posy>450</posy>
 				<height>70</height>
-				<width>100</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>

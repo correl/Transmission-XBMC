@@ -6,7 +6,7 @@ import xbmcgui
 import xbmcaddon
 __scriptname__ = "Transmission-XBMC"
 __author__ = "Correl Roush <correl@gmail.com>"
-__url__ = ""
+__url__ = "http://github.com/correl/Transmission-XBMC/tree/xbmc-svn"
 __svn_url__ = ""
 __credits__ = ""
 __version__ = "0.5.0"
