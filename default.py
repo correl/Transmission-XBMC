@@ -10,7 +10,7 @@ __author__ = "Correl Roush <correl@gmail.com>"
 __url__ = "http://github.com/correl/Transmission-XBMC/tree/xbmc-svn"
 __svn_url__ = ""
 __credits__ = ""
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 __XBMC_Revision__ = "30377"
 
 BASE_RESOURCE_PATH = xbmc.translatePath( os.path.join( os.getcwd(), 'resources', 'lib' ) )
