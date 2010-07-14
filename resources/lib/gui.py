@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Copyright (c) 2010 Correl J. Roush
 
 import os
 import sys
@@ -10,10 +11,13 @@ from basictypes.bytes import Bytes
 from repeater import Repeater
 
 _ = sys.modules[ "__main__" ].__language__
-__settings__ = xbmc.Settings(path=os.getcwd())
+__settings__ = sys.modules[ "__main__" ].__settings__
 
 KEY_BUTTON_BACK = 275
 KEY_KEYBOARD_ESC = 61467
+
+EXIT_SCRIPT = ( 6, 10, 247, 275, 61467, 216, 257, 61448, )
+CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
 
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
@@ -70,11 +74,16 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             list.reset()
             for id, item in self.list.iteritems():
                 list.addItem(item)
-    def onAction(self, action):
-        buttonCode =  action.getButtonCode()
-        actionID   =  action.getId()
-        if (buttonCode == KEY_BUTTON_BACK or buttonCode == KEY_KEYBOARD_ESC):
-            self.shutDown()
+#    def onAction(self, action):
+#        buttonCode =  action.getButtonCode()
+#        actionID   =  action.getId()
+#        if (buttonCode == KEY_BUTTON_BACK or buttonCode == KEY_KEYBOARD_ESC):
+#            self.shutDown()
+
+    def exit_script( self, restart=False ):
+        self.shutDown()
+        #self.close()
+        
     def onClick(self, controlID):
         list = self.getControl(20)
         if (controlID == 11):
@@ -119,6 +128,12 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def onFocus(self, controlID):
         pass
 
+    def onAction( self, action ):
+        print str(action.getButtonCode())
+        if ( action.getButtonCode() in CANCEL_DIALOG ):
+            print str(action.getButtonCode())
+            self.exit_script() 
+
 class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
         self.torrent_id = None
@@ -136,3 +151,6 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         pass
     def onFocus(self, controlID):
         pass
+        
+        
+       

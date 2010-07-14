@@ -14,8 +14,13 @@ Currently, Transmission-XBMC supports viewing, adding, removing, starting and st
 Installation
 ------------
 
-This script is intended for XBMC version 9.11. For more recent builds, check out the `xbmc-svn` branch.
+This script is intended for svn builds of XBMC. For the stable 9.11 release, check out the `master` branch.
 
-To install, place the Transmission-XBMC folder in your XBMC scripts directory (usually `${HOME}/.xbmc/scripts`)
+To install, place the Transmission-XBMC folder in your XBMC plugins directory (usually `${HOME}/.xbmc/plugins`)
 
-If your transmission daemon is running on a machine other than localhost, using a port other than 9091, or requires authentication, you will have to change the script settings before running it.
+If your transmission daemon is running on a machine other than localhost, using a port other than 9091, or requires authentication, you will have to change the plugin settings before running it.
+
+License
+-------
+
+Transmission-XBMC is licensed under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.html).

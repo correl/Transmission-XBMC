@@ -2,22 +2,22 @@
 	<defaultcontrol>20</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<posx>20</posx>
-		<posy>20</posy>
+		<posx>120</posx>
+		<posy>70</posy>
 	</coordinates>
 	<controls>
 		<control type="image">
 			<description>backdrop</description>
 			<posx>-20</posx>
 			<posy>-20</posy>
-			<width>720</width>
+			<width>1000</width>
 			<height>576</height>
 			<texture>black.png</texture>
 		</control>
 		<control type="image">
 			<posx>-10</posx>
 			<posy>-8</posy>
-			<width>700</width>
+			<width>980</width>
 			<height>560</height>
 			<texture>transmission-main.png</texture>
             <animation effect="fade" time="200">WindowOpen</animation>
@@ -28,7 +28,7 @@
 			<description>textarea</description>
 			<posx>0</posx>
 			<posy>0</posy>
-			<width>700</width>
+			<width>980</width>
 			<visible>true</visible>
 			<label>Transmission</label>
 			<font>font11</font>
@@ -44,20 +44,21 @@
 				<posx>0</posx>
 				<posy>0</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT101</label>
 				<onright>20</onright>
 				<ondown>12</ondown>
+                <onup>17</onup>
 			</control>
 			<control type="button" id="12">
 				<description>Remove torrent</description>
 				<posx>0</posx>
 				<posy>70</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -71,7 +72,7 @@
 				<posx>0</posx>
 				<posy>150</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -85,7 +86,7 @@
 				<posx>0</posx>
 				<posy>220</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -99,7 +100,7 @@
 				<posx>0</posx>
 				<posy>300</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -113,7 +114,7 @@
 				<posx>0</posx>
 				<posy>370</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
@@ -127,13 +128,14 @@
 				<posx>0</posx>
 				<posy>450</posy>
 				<height>70</height>
-				<width>70</width>
+				<width>110</width>
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT107</label>
 				<onright>20</onright>
 				<onup>16</onup>
+                <ondown>11</ondown>
 			</control>
 		</control>
 		<!--
@@ -147,33 +149,34 @@
 		-->
 		<control type="list" id="20">
 			<description>Torrent list</description>
-			<posx>90</posx>
+			<posx>135</posx>
 			<posy>35</posy>
-			<width>560</width>
+			<width>800</width>
 			<height>500</height>
 			<viewtype label="Torrent List">list</viewtype>
 			<orientation>vertical</orientation>
 			<visible>true</visible>
 			<onleft>11</onleft>
+            <onright>17</onright>
 			<itemlayout width="560" height="70">
 				<control type="image">
 					<posx>0</posx>
 					<posy>0</posy>
-					<width>610</width>
+					<width>800</width>
 					<height>70</height>
 					<texture>list-bg.png</texture>
 				</control>
 				<control type="label">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>640</width>
+					<width>790</width>
 					<height>20</height>
 					<info>ListItem.label</info>
 				</control>
 				<control type="label">
 					<posx>15</posx>
 					<posy>20</posy>
-					<width>635</width>
+					<width>785</width>
 					<height>20</height>
 					<info>ListItem.label2</info>
 				</control>
@@ -182,7 +185,7 @@
 				<control type="image">
 					<posx>0</posx>
 					<posy>0</posy>
-					<width>610</width>
+					<width>800</width>
 					<height>70</height>
 					<visible>Control.HasFocus(20)</visible>
 					<texture border="5">list-bg-selected.png</texture>
@@ -190,7 +193,7 @@
 				<control type="image">
 					<posx>0</posx>
 					<posy>0</posy>
-					<width>610</width>
+					<width>800</width>
 					<height>70</height>
 					<visible>!Control.HasFocus(20)</visible>
 					<texture border="5">list-bg-selected-nofocus.png</texture>
@@ -198,7 +201,7 @@
 				<control type="label">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>640</width>
+					<width>870</width>
 					<height>20</height>
 					<info>ListItem.label</info>
 					<scroll>true</scroll>
@@ -206,7 +209,7 @@
 				<control type="label">
 					<posx>15</posx>
 					<posy>20</posy>
-					<width>635</width>
+					<width>885</width>
 					<height>20</height>
 					<info>ListItem.label2</info>
 				</control>
