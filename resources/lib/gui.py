@@ -21,16 +21,27 @@ CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
 
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
+        self.list = {}
+        self.torrents = {}
+    def onInit(self):
+        p = xbmcgui.DialogProgress()
+        p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
         params = {
             'address': __settings__.getSetting('rpc_host'),
             'port': __settings__.getSetting('rpc_port'),
             'user': __settings__.getSetting('rpc_user'),
             'password': __settings__.getSetting('rpc_password')
         }
-        self.transmission = transmissionrpc.transmission.Client(**params)
-        self.list = {}
-        self.torrents = {}
-    def onInit(self):
+        try:
+            self.transmission = transmissionrpc.transmission.Client(**params)
+        except transmissionrpc.transmission.TransmissionError:
+            p.close()
+            d = xbmcgui.Dialog()
+            (type, e, traceback) = sys.exc_info()
+            d.ok(_(2), e.message) # 'Transmission Error'
+            self.close()
+            return False
+        p.close()
         self.updateTorrents()
         self.repeater = Repeater(1.0, self.updateTorrents)
         self.repeater.start()
