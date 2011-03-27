@@ -6,7 +6,6 @@ import sys
 import base64
 import xbmc
 import xbmcgui
-import transmissionrpc
 from basictypes.bytes import Bytes
 from repeater import Repeater
 
@@ -32,6 +31,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             'user': __settings__.getSetting('rpc_user'),
             'password': __settings__.getSetting('rpc_password')
         }
+        import transmissionrpc
         try:
             self.transmission = transmissionrpc.transmission.Client(**params)
         except transmissionrpc.transmission.TransmissionError:
