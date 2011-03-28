@@ -33,8 +33,8 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         }
         import transmissionrpc
         try:
-            self.transmission = transmissionrpc.transmission.Client(**params)
-        except transmissionrpc.transmission.TransmissionError:
+            self.transmission = transmissionrpc.Client(**params)
+        except transmissionrpc.TransmissionError:
             p.close()
             d = xbmcgui.Dialog()
             (type, e, traceback) = sys.exc_info()
