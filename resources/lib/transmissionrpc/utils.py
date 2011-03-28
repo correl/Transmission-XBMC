@@ -88,7 +88,10 @@ def rpc_bool(arg):
             arg = bool(int(arg))
         except ValueError:
             arg = arg.lower() in [u'true', u'yes']
-    return 1 if bool(arg) else 0
+    if bool(arg):
+        return 1
+    else:
+        return 0
 
 TR_TYPE_MAP = {
     'number' : int,

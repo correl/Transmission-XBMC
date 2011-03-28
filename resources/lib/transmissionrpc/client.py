@@ -41,6 +41,51 @@ def debug_httperror(error):
         )
     )
 
+def _urlparse(address):
+    """
+    Mimic python 2.5+ urlparse.urlparse
+    """
+    class ParsedResult(tuple):
+        def __init__(self, address = None):
+            self.scheme = ''
+            self.netloc = ''
+            self.path = ''
+            self.params = ''
+            self.query = ''
+            self.fragment = ''
+            self.username = None
+            self.password = None
+            self.hostname = None
+            self.port = None
+
+            if address:
+                self.parse(address)
+        def parse(self, address):
+            (
+                self.scheme,
+                self.netloc,
+                self.path,
+                self.params,
+                self.query,
+                self.fragment
+            ) = urlparse.urlparse(address)
+            self.hostname = self.netloc
+            if '@' in self.netloc:
+                (login, self.hostname) = self.netloc.split('@')
+                if ':' in login:
+                    (self.username, self.password) = login.split(':')
+                else:
+                    self.username = login
+            if ':' in self.hostname:
+                (self.hostname, self.port) = self.hostname.split(':')
+                try:
+                    self.port = int(self.port)
+                except:
+                    self.port = None
+
+    result = ParsedResult(address)
+    return result
+
 """
 Torrent ids
 
@@ -65,7 +110,7 @@ class Client(object):
             self._query_timeout = float(timeout)
         else:
             self._query_timeout = DEFAULT_TIMEOUT
-        urlo = urlparse.urlparse(address)
+        urlo = _urlparse(address)
         if urlo.scheme == '':
             base_url = 'http://' + address + ':' + str(port)
             self.url = base_url + '/transmission/rpc'
@@ -361,7 +406,7 @@ class Client(object):
             raise ValueError('add_uri requires a URI.')
         # there has been some problem with T's built in torrent fetcher,
         # use a python one instead
-        parseduri = urlparse.urlparse(uri)
+        parseduri = _urlparse(uri)
         torrent_data = None
         if parseduri.scheme in ['file', 'ftp', 'ftps', 'http', 'https']:
             torrent_file = urllib2.urlopen(uri)
