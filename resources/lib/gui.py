@@ -18,10 +18,12 @@ KEY_KEYBOARD_ESC = 61467
 EXIT_SCRIPT = ( 6, 10, 247, 275, 61467, 216, 257, 61448, )
 CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
 
+
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
         self.list = {}
         self.torrents = {}
+        self.repeater = None
     def onInit(self):
         p = xbmcgui.DialogProgress()
         p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
@@ -38,16 +40,24 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             p.close()
             d = xbmcgui.Dialog()
             (type, e, traceback) = sys.exc_info()
-            d.ok(_(2), e.message) # 'Transmission Error'
+            message = e.message
+            if e.original:
+                message += ': ' + e.original.message
+            d.ok(_(2), message) # 'Transmission Error'
+            self.close()
+            return False
+        except:
+            p.close()
+            d = xbmcgui.Dialog()
+            (type, e, traceback) = sys.exc_info()
+            d.ok(_(2), _(9000)) # Unexpected error
+            print e
             self.close()
             return False
         p.close()
         self.updateTorrents()
         self.repeater = Repeater(1.0, self.updateTorrents)
         self.repeater.start()
-    def shutDown(self):
-        self.repeater.stop()
-        self.close()
     def updateTorrents(self):
         list = self.getControl(20)
         torrents = self.transmission.info()
@@ -83,16 +93,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             list.reset()
             for id, item in self.list.iteritems():
                 list.addItem(item)
-#    def onAction(self, action):
-#        buttonCode =  action.getButtonCode()
-#        actionID   =  action.getId()
-#        if (buttonCode == KEY_BUTTON_BACK or buttonCode == KEY_KEYBOARD_ESC):
-#            self.shutDown()
 
-    def exit_script( self, restart=False ):
-        self.shutDown()
-        #self.close()
-        
     def onClick(self, controlID):
         list = self.getControl(20)
         if (controlID == 11):
@@ -125,7 +126,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.transmission.start(self.torrents.keys())
         if (controlID == 17):
             # Exit button
-            self.shutDown()
+            self.close()
         if (controlID == 20):
             # A torrent was chosen, show details
             item = list.getSelectedItem()
@@ -138,7 +139,12 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
 
     def onAction( self, action ):
         if ( action.getButtonCode() in CANCEL_DIALOG ):
-            self.exit_script() 
+            self.close()
+    def close(self):
+        if self.repeater:
+            self.repeater.stop()
+        super(TransmissionGUI, self).close()
+
 
 class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):

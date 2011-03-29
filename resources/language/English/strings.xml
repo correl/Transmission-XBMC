@@ -20,4 +20,7 @@
     <string id="1002">Port</string>
     <string id="1003">User</string>
     <string id="1004">Password</string>
+
+    <!-- Errors -->
+    <string id="9000">An unexpected error occurred</string>
 </strings>
