@@ -44,7 +44,7 @@ class DefaultHTTPHandler(HTTPHandler):
         password_manager.add_password(realm=None, uri=uri, user=login, passwd=password)
         opener = urllib2.build_opener(
             urllib2.HTTPBasicAuthHandler(password_manager)
-            #, urllib2.HTTPDigestAuthHandler(password_manager)
+            , urllib2.HTTPDigestAuthHandler(password_manager)
             )
         urllib2.install_opener(opener)
 

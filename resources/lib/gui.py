@@ -36,21 +36,24 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         import transmissionrpc
         try:
             self.transmission = transmissionrpc.Client(**params)
-        except transmissionrpc.TransmissionError:
-            p.close()
-            d = xbmcgui.Dialog()
-            (type, e, traceback) = sys.exc_info()
-            message = e.message
-            if e.original:
-                message += ': ' + e.original.message
-            d.ok(_(2), message) # 'Transmission Error'
-            self.close()
-            return False
         except:
             p.close()
             d = xbmcgui.Dialog()
             (type, e, traceback) = sys.exc_info()
-            d.ok(_(2), _(9000)) # Unexpected error
+
+            message = _(9000) # Unexpected error
+            if type is transmissionrpc.TransmissionError:
+                if e.original:
+                    if e.original.code is 401:
+                        message = _(9002) # Invalid auth
+                    else:
+                        message = _(9001) # Unable to connect
+            elif type is ValueError:
+                # In python 2.4, urllib2.HTTPDigestAuthHandler will barf up a lung
+                # if auth fails and the server wants non-digest authentication
+                message = _(9002) # Invalid auth
+
+            d.ok(_(2), message)
             print e
             self.close()
             return False

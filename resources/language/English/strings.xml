@@ -23,4 +23,6 @@
 
     <!-- Errors -->
     <string id="9000">An unexpected error occurred</string>
+    <string id="9001">Could not connect to Transmission</string>
+    <string id="9002">Invalid username or password</string>
 </strings>
