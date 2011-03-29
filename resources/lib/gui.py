@@ -46,9 +46,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.repeater = Repeater(1.0, self.updateTorrents)
         self.repeater.start()
     def shutDown(self):
-        print "terminating repeater"
         self.repeater.stop()
-        print "closing transmission gui"
         self.close()
     def updateTorrents(self):
         list = self.getControl(20)
@@ -139,14 +137,11 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         pass
 
     def onAction( self, action ):
-        print str(action.getButtonCode())
         if ( action.getButtonCode() in CANCEL_DIALOG ):
-            print str(action.getButtonCode())
             self.exit_script() 
 
 class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
-        help(xbmcgui)
         self.transmission = None
         self.torrent_id = None
         self.list = {}
@@ -198,6 +193,3 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         pass
     def onFocus(self, controlID):
         pass
-        
-        
-       
