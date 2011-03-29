@@ -38,6 +38,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.transmission = transmissionrpc.Client(**params)
         except:
             p.close()
+            self.close()
             d = xbmcgui.Dialog()
             (type, e, traceback) = sys.exc_info()
 
@@ -48,14 +49,18 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                         message = _(9002) # Invalid auth
                     else:
                         message = _(9001) # Unable to connect
+                if d.yesno(_(2), message, _(3)):
+                    __settings__.openSettings()
             elif type is ValueError:
                 # In python 2.4, urllib2.HTTPDigestAuthHandler will barf up a lung
                 # if auth fails and the server wants non-digest authentication
                 message = _(9002) # Invalid auth
+                if d.yesno(_(2), message, _(3)):
+                    __settings__.openSettings()
+            else:
+                message = _(9000) # Unexpected error
+                d.ok(_(2), message)
 
-            d.ok(_(2), message)
-            print e
-            self.close()
             return False
         p.close()
         self.updateTorrents()
