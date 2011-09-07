@@ -101,6 +101,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             list.reset()
             for id, item in self.list.iteritems():
                 list.addItem(item)
+        list.setEnabled(bool(torrents))
 
     def onClick(self, controlID):
         list = self.getControl(20)
@@ -171,7 +172,7 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         labelStatus = self.getControl(2)
         torrent = self.transmission.info()[self.torrent_id]
         files = self.transmission.get_files(self.torrent_id)[self.torrent_id]
-        
+
         statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
             {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
             'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
@@ -179,11 +180,11 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         if torrent.status is 'downloading':
             statusline += " ETA: %(eta)s" % \
                     {'eta': torrent.eta}
-        
+
         labelName.setLabel(torrent.name)
         labelStatus.setLabel(statusline)
         pbar.setPercent(torrent.progress)
-        
+
         for i, file in files.iteritems():
             if i not in self.list:
                 # Create a new list item

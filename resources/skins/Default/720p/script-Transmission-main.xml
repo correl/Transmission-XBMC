@@ -1,5 +1,5 @@
 <window>
-	<defaultcontrol always="true">1501</defaultcontrol>
+	<defaultcontrol always="true">11</defaultcontrol>
 	<allowoverlays>false</allowoverlays>
 	<coordinates>
 		<system>1</system>
@@ -7,7 +7,7 @@
 		<posy>70</posy>
 	</coordinates>
 	<controls>
-		
+
 		<control type="image">
 			<posx>-10</posx>
 			<posy>-8</posy>
