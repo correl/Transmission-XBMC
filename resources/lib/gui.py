@@ -108,8 +108,13 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if (controlID == 11):
             # Add torrent
             d = xbmcgui.Dialog()
-            f = d.browse(1, _(0), 'files', '.torrent')
-            self.transmission.add_url(f)
+            filename = d.browse(1, _(0), 'files', '.torrent')
+            try:
+                f = open(filename, 'r')
+                data = base64.b64encode(f.read())
+                self.transmission.add(data)
+            except:
+                pass
         if (controlID == 12):
             # Remove selected torrent
             item = list.getSelectedItem()
