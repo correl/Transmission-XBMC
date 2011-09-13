@@ -112,6 +112,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 (_(200), None),
                 (_(201), search.BTJunkie),
                 (_(202), search.TPB),
+                (_(203), search.Mininova),
             ]
             selected = xbmcgui.Dialog().select(_(0), [i[0] for i in engines])
             if selected < 0:
@@ -133,6 +134,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 terms = kb.getText()
                 p = xbmcgui.DialogProgress()
                 p.create(_(0), _(290))
+                results = engine().search(terms)
                 try:
                     results = engine().search(terms)
                 except:
