@@ -1,6 +1,9 @@
 import re
+import socket
 from urllib2 import urlopen
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
+
+socket.setdefaulttimeout(15)
 
 class Search:
     def __init__(self):
@@ -10,10 +13,10 @@ class Search:
 
 class BTJunkie(Search):
     def __init__(self):
-        self.search_uri = 'http://btjunkie.org/rss.xml?query={terms}&o=52'
+        self.search_uri = 'http://btjunkie.org/rss.xml?query=%s&o=52'
     def search(self, terms):
         torrents = []
-        url = self.search_uri.format(terms=terms)
+        url = self.search_uri % '+'.join(terms.split(' '))
         f = urlopen(url)
         soup = BeautifulStoneSoup(f.read())
         for item in soup.findAll('item'):
@@ -27,10 +30,10 @@ class BTJunkie(Search):
         return torrents
 class TPB(Search):
     def __init__(self):
-        self.search_uri = 'http://thepiratebay.org/search/{terms}/'
+        self.search_uri = 'http://thepiratebay.org/search/%s/'
     def search(self, terms):
         torrents = []
-        url = self.search_uri.format(terms=terms)
+        url = self.search_uri % '+'.join(terms.split(' '))
         f = urlopen(url)
         soup = BeautifulSoup(f.read())
         for details in soup.findAll('a', {'class': 'detLink'}):
