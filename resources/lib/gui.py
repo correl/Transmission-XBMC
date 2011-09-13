@@ -134,7 +134,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 terms = kb.getText()
                 p = xbmcgui.DialogProgress()
                 p.create(_(0), _(290))
-                results = engine().search(terms)
                 try:
                     results = engine().search(terms)
                 except:
