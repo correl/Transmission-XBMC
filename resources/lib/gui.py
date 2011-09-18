@@ -69,15 +69,16 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.repeater.start()
     def updateTorrents(self):
         list = self.getControl(20)
+        statuses = {'stopped': _(302),
+                    'seeding': _(301),
+                    'downloading': _(300)}
         torrents = self.transmission.info()
         for i, torrent in torrents.iteritems():
+            status = statuses[torrent.status]
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
                 {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
                 'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
                 'status': torrent.status}
-            if torrent.status is 'downloading':
-                statusline += " ETA: %(eta)s" % \
-                    {'eta': torrent.eta}
             if i not in self.list:
                 # Create a new list item
                 l = xbmcgui.ListItem(label=torrent.name, label2=statusline)
@@ -89,8 +90,9 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.torrents = torrents
             l.setLabel(torrent.name)
             l.setLabel2(statusline)
+            l.setProperty('TorrentStatus', status)
             l.setProperty('TorrentID', str(i))
-            l.setProperty('TorrentProgress', "%.2ff" % torrent.progress)
+            l.setProperty('TorrentProgress', "%.2f" % torrent.progress)
             l.setInfo('torrent', torrent.fields)
             l.setInfo('video', {'episode': int(torrent.progress)})
 

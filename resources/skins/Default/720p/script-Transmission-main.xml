@@ -14,8 +14,8 @@
 			<width>980</width>
 			<height>560</height>
 			<texture>transmission-main.png</texture>
-            <animation effect="fade" time="200">WindowOpen</animation>
-            <animation effect="fade" time="200">WindowClose</animation>
+			<animation effect="fade" time="200">WindowOpen</animation>
+			<animation effect="fade" time="200">WindowClose</animation>
 		</control>
 
 		<control type="label">
@@ -150,7 +150,7 @@
 				<onup>16</onup>
 				<texturefocus>exit-focus.png</texturefocus>
 				<texturenofocus>exit-nofocus.png</texturenofocus>
-                <ondown>11</ondown>
+				<ondown>11</ondown>
 			</control>
 		</control>
 		<!--
@@ -172,7 +172,7 @@
 			<orientation>vertical</orientation>
 			<visible>true</visible>
 			<onleft>11</onleft>
-            <onright>17</onright>
+			<onright>17</onright>
 			<itemlayout width="560" height="70">
 				<control type="image">
 					<posx>0</posx>
@@ -184,16 +184,25 @@
 				<control type="label">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>790</width>
+					<width>110</width>
 					<height>20</height>
-					<info>ListItem.label</info>
+					<label>[$INFO[ListItem.Property(TorrentStatus)]]</label>
+					<scroll>true</scroll>
 				</control>
 				<control type="label">
-					<posx>15</posx>
-					<posy>20</posy>
-					<width>785</width>
+					<posx>120</posx>
+					<posy>0</posy>
+					<width>680</width>
 					<height>20</height>
-					<info>ListItem.label2</info>
+					<label>$INFO[ListItem.label]</label>
+					<scroll>true</scroll>
+				</control>
+				<control type="progress">
+					<posx>10</posx>
+					<posy>40</posy>
+					<width>790</width>
+					<height>20</height>
+					<info>ListItem.Property(TorrentProgress)</info>
 				</control>
 			</itemlayout>
 			<focusedlayout width="560" height="70">
@@ -216,17 +225,25 @@
 				<control type="label">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>870</width>
+					<width>110</width>
 					<height>20</height>
-					<info>ListItem.label</info>
+					<label>[$INFO[ListItem.Property(TorrentStatus)]]</label>
 					<scroll>true</scroll>
 				</control>
 				<control type="label">
-					<posx>15</posx>
-					<posy>20</posy>
-					<width>885</width>
+					<posx>120</posx>
+					<posy>0</posy>
+					<width>680</width>
 					<height>20</height>
-					<info>ListItem.label2</info>
+					<label>$INFO[ListItem.label]</label>
+					<scroll>true</scroll>
+				</control>
+				<control type="progress">
+					<posx>10</posx>
+					<posy>40</posy>
+					<width>790</width>
+					<height>20</height>
+					<info>ListItem.Property(TorrentProgress)</info>
 				</control>
 			</focusedlayout>
 		</control>
