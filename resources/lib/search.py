@@ -71,6 +71,23 @@ class TPB(Search):
                 'leechers': leechers,
             })
         return torrents
+class TorrentReactor(Search):
+    def __init__(self):
+        self.search_uri = 'http://www.torrentreactor.net/rss.php?search=%s'
+    def search(self, terms):
+        torrents = []
+        url = self.search_uri % '+'.join(terms.split(' '))
+        f = urlopen(url)
+        soup = BeautifulStoneSoup(f.read())
+        for item in soup.findAll('item'):
+            (seeds, leechers) = re.findall('Status: (\d+) seeders, (\d+) leecher', item.description.text)[0]
+            torrents.append({
+                'url': item.enclosure['url'],
+                'name': item.title.text,
+                'seeds': int(seeds),
+                'leechers': int(leechers),
+            })
+        return torrents
 
 if __name__ == '__main__':
     s = TPB()
