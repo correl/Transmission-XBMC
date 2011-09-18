@@ -20,7 +20,11 @@ class BTJunkie(Search):
         f = urlopen(url)
         soup = BeautifulStoneSoup(f.read())
         for item in soup.findAll('item'):
-            (name, seeds, leechers) = re.findall('(.*?)\s+\[(\d+)\/(\d+)\]$', item.title.text)[0]
+            (name, seeds, leechers) = re.findall('(.*?)\s+\[(\d+|X)\/(\d+|X)\]$', item.title.text)[0]
+            if seeds == 'X':
+                seeds = 0
+            if leechers == 'X':
+                leechers = 0
             torrents.append({
                 'url': item.enclosure['url'],
                 'name': name,
