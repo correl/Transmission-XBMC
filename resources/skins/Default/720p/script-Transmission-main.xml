@@ -1,5 +1,5 @@
 <window>
-	<defaultcontrol always="true">11</defaultcontrol>
+	<defaultcontrol always="true">111</defaultcontrol>
 	<allowoverlays>false</allowoverlays>
 	<coordinates>
 		<system>1</system>
@@ -33,7 +33,7 @@
 			<posx>0</posx>
 			<posy>10</posy>
 			<!-- Button Group -->
-			<control type="button" id="11">
+			<control type="button" id="111">
 				<description>Add torrent</description>
 				<posx>0</posx>
 				<posy>0</posy>
@@ -44,13 +44,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT101</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<ondown>12</ondown>
-				<onup>17</onup>
+				<onright>120</onright>
+				<ondown>112</ondown>
+				<onup>117</onup>
 				<texturefocus>add-focus.png</texturefocus>
 				<texturenofocus>add-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="12">
+			<control type="button" id="112">
 				<description>Remove torrent</description>
 				<posx>0</posx>
 				<posy>75</posy>
@@ -61,13 +61,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT102</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>11</onup>
-				<ondown>13</ondown>
+				<onright>120</onright>
+				<onup>111</onup>
+				<ondown>113</ondown>
 				<texturefocus>remove-focus.png</texturefocus>
 				<texturenofocus>remove-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="13">
+			<control type="button" id="113">
 				<description>Stop torrent</description>
 				<posx>0</posx>
 				<posy>150</posy>
@@ -78,13 +78,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT103</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>12</onup>
-				<ondown>14</ondown>
+				<onright>120</onright>
+				<onup>112</onup>
+				<ondown>114</ondown>
 				<texturefocus>stop-focus.png</texturefocus>
 				<texturenofocus>stop-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="14">
+			<control type="button" id="114">
 				<description>Start torrent</description>
 				<posx>0</posx>
 				<posy>225</posy>
@@ -95,13 +95,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT104</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>13</onup>
-				<ondown>15</ondown>
+				<onright>120</onright>
+				<onup>113</onup>
+				<ondown>115</ondown>
 				<texturefocus>start-focus.png</texturefocus>
 				<texturenofocus>start-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="15">
+			<control type="button" id="115">
 				<description>Stop all torrents</description>
 				<posx>0</posx>
 				<posy>300</posy>
@@ -112,13 +112,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT105</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>14</onup>
-				<ondown>16</ondown>
+				<onright>120</onright>
+				<onup>114</onup>
+				<ondown>116</ondown>
 				<texturefocus>stopall-focus.png</texturefocus>
 				<texturenofocus>stopall-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="16">
+			<control type="button" id="116">
 				<description>Start all torrents</description>
 				<posx>0</posx>
 				<posy>375 </posy>
@@ -129,13 +129,13 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT106</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>15</onup>
-				<ondown>17</ondown>
+				<onright>120</onright>
+				<onup>115</onup>
+				<ondown>117</ondown>
 				<texturefocus>startall-focus.png</texturefocus>
 				<texturenofocus>startall-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="17">
+			<control type="button" id="117">
 				<description>Exit</description>
 				<posx>0</posx>
 				<posy>450</posy>
@@ -146,11 +146,11 @@
 				<textoffsety>45</textoffsety>
 				<label>SCRIPT107</label>
 				<font>font12_title</font>
-				<onright>20</onright>
-				<onup>16</onup>
+				<onright>120</onright>
+				<onup>116</onup>
 				<texturefocus>exit-focus.png</texturefocus>
 				<texturenofocus>exit-nofocus.png</texturenofocus>
-				<ondown>11</ondown>
+				<ondown>111</ondown>
 			</control>
 		</control>
 		<!--
@@ -162,7 +162,7 @@
 			<texture>blue.png</texture>
 		</control>
 		-->
-		<control type="list" id="20">
+		<control type="list" id="120">
 			<description>Torrent list</description>
 			<posx>135</posx>
 			<posy>35</posy>
@@ -171,8 +171,8 @@
 			<viewtype label="Torrent List">list</viewtype>
 			<orientation>vertical</orientation>
 			<visible>true</visible>
-			<onleft>11</onleft>
-			<onright>17</onright>
+			<onleft>111</onleft>
+			<onright>117</onright>
 			<itemlayout width="560" height="70">
 				<control type="image">
 					<posx>0</posx>
@@ -181,26 +181,24 @@
 					<height>70</height>
 					<texture>list-bg.png</texture>
 				</control>
-				<control type="label">
+				<control type="image">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>110</width>
-					<height>20</height>
-					<label>[$INFO[ListItem.Property(TorrentStatus)]]</label>
-					<scroll>true</scroll>
+					<width>64</width>
+					<height>64</height>
+					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
 				</control>
 				<control type="label">
-					<posx>120</posx>
+					<posx>90</posx>
 					<posy>0</posy>
-					<width>680</width>
+					<width>700</width>
 					<height>20</height>
 					<label>$INFO[ListItem.label]</label>
-					<scroll>true</scroll>
 				</control>
 				<control type="progress">
-					<posx>10</posx>
+					<posx>90</posx>
 					<posy>40</posy>
-					<width>790</width>
+					<width>700</width>
 					<height>20</height>
 					<info>ListItem.Property(TorrentProgress)</info>
 				</control>
@@ -211,7 +209,7 @@
 					<posy>0</posy>
 					<width>800</width>
 					<height>70</height>
-					<visible>Control.HasFocus(20)</visible>
+					<visible>Control.HasFocus(120)</visible>
 					<texture border="5">list-bg-selected.png</texture>
 				</control>
 				<control type="image">
@@ -219,29 +217,28 @@
 					<posy>0</posy>
 					<width>800</width>
 					<height>70</height>
-					<visible>!Control.HasFocus(20)</visible>
+					<visible>!Control.HasFocus(120)</visible>
 					<texture border="5">list-bg-selected-nofocus.png</texture>
 				</control>
-				<control type="label">
+				<control type="image">
 					<posx>10</posx>
 					<posy>0</posy>
-					<width>110</width>
-					<height>20</height>
-					<label>[$INFO[ListItem.Property(TorrentStatus)]]</label>
-					<scroll>true</scroll>
+					<width>64</width>
+					<height>64</height>
+					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
 				</control>
 				<control type="label">
-					<posx>120</posx>
+					<posx>90</posx>
 					<posy>0</posy>
-					<width>680</width>
+					<width>700</width>
 					<height>20</height>
 					<label>$INFO[ListItem.label]</label>
 					<scroll>true</scroll>
 				</control>
 				<control type="progress">
-					<posx>10</posx>
+					<posx>90</posx>
 					<posy>40</posy>
-					<width>790</width>
+					<width>700</width>
 					<height>20</height>
 					<info>ListItem.Property(TorrentProgress)</info>
 				</control>

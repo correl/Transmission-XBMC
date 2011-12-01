@@ -68,13 +68,9 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.repeater = Repeater(1.0, self.updateTorrents)
         self.repeater.start()
     def updateTorrents(self):
-        list = self.getControl(20)
-        statuses = {'stopped': _(302),
-                    'seeding': _(301),
-                    'downloading': _(300)}
+        list = self.getControl(120)
         torrents = self.transmission.info()
         for i, torrent in torrents.iteritems():
-            status = statuses[torrent.status]
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
                 {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
                 'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
@@ -88,9 +84,12 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 # Update existing list item
                 l = self.list[i]
             self.torrents = torrents
+            statusicons = {'stopped': 'pause.png',
+                           'seeding': 'ok.png',
+                           'downloading': 'down.png'}
             l.setLabel(torrent.name)
             l.setLabel2(statusline)
-            l.setProperty('TorrentStatus', status)
+            l.setProperty('TorrentStatusIcon', statusicons[torrent.status])
             l.setProperty('TorrentID', str(i))
             l.setProperty('TorrentProgress', "%.2f" % torrent.progress)
             l.setInfo('torrent', torrent.fields)
@@ -107,8 +106,8 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         list.setEnabled(bool(torrents))
 
     def onClick(self, controlID):
-        list = self.getControl(20)
-        if (controlID == 11):
+        list = self.getControl(120)
+        if (controlID == 111):
             # Add torrent
             engines = [
                 (_(200), None),
@@ -157,32 +156,32 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 except:
                     xbmcgui.Dialog().ok(_(0), _(293))
                     return
-        if (controlID == 12):
+        if (controlID == 112):
             # Remove selected torrent
             item = list.getSelectedItem()
             if item and xbmcgui.Dialog().yesno(_(0), 'Remove \'%s\'?' % self.torrents[int(item.getProperty('TorrentID'))].name):
                 remove_data = xbmcgui.Dialog().yesno(_(0), 'Remove data as well?')
                 self.transmission.remove(int(item.getProperty('TorrentID')), remove_data)
-        if (controlID == 13):
+        if (controlID == 113):
             # Stop selected torrent
             item = list.getSelectedItem()
             if item:
                 self.transmission.stop(int(item.getProperty('TorrentID')))
-        if (controlID == 14):
+        if (controlID == 114):
             # Start selected torrent
             item = list.getSelectedItem()
             if item:
                 self.transmission.start(int(item.getProperty('TorrentID')))
-        if (controlID == 15):
+        if (controlID == 115):
             # Stop all torrents
             self.transmission.stop(self.torrents.keys())
-        if (controlID == 16):
+        if (controlID == 116):
             # Start all torrents
             self.transmission.start(self.torrents.keys())
-        if (controlID == 17):
+        if (controlID == 117):
             # Exit button
             self.close()
-        if (controlID == 20):
+        if (controlID == 120):
             # A torrent was chosen, show details
             item = list.getSelectedItem()
             w = TorrentInfoGUI("script-Transmission-details.xml",os.getcwd() ,"Default")
