@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2010 Correl J. Roush
 
-import os
 import sys
 import base64
 import urllib2
@@ -184,7 +183,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if (controlID == 120):
             # A torrent was chosen, show details
             item = list.getSelectedItem()
-            w = TorrentInfoGUI("script-Transmission-details.xml",os.getcwd() ,"Default")
+            w = TorrentInfoGUI("script-Transmission-details.xml", __settings__.getAddonInfo('path') ,"Default")
             w.setTorrent(self.transmission, int(item.getProperty('TorrentID')))
             w.doModal()
             del w
