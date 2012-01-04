@@ -2,6 +2,7 @@
 # Copyright (c) 2008-2011 Erik Svensson <erik.public@gmail.com>
 # Licensed under the MIT license.
 
+import sys
 import re, time
 import urllib2, urlparse, base64
 
@@ -39,6 +40,55 @@ def debug_httperror(error):
             indent=2
         )
     )
+
+if sys.version_info[:2] < (2, 5):
+    """
+    Mimic python 2.5+ urlparse.urlparse
+    """
+    _old_urlparse = urlparse.urlparse
+    def _urlparse(address):
+        class ParsedResult(tuple):
+            def __init__(self, address = None):
+                self.scheme = ''
+                self.netloc = ''
+                self.path = ''
+                self.params = ''
+                self.query = ''
+                self.fragment = ''
+                self.username = None
+                self.password = None
+                self.hostname = None
+                self.port = None
+
+                if address:
+                    self.parse(address)
+            def parse(self, address):
+                (
+                    self.scheme,
+                    self.netloc,
+                    self.path,
+                    self.params,
+                    self.query,
+                    self.fragment
+                ) = _old_urlparse(address)
+                self.hostname = self.netloc
+                if '@' in self.netloc:
+                    (login, self.hostname) = self.netloc.split('@')
+                    if ':' in login:
+                        (self.username, self.password) = login.split(':')
+                    else:
+                        self.username = login
+                if ':' in self.hostname:
+                    (self.hostname, self.port) = self.hostname.split(':')
+                    try:
+                        self.port = int(self.port)
+                    except:
+                        self.port = None
+
+        result = ParsedResult(address)
+        return result
+
+    urlparse.urlparse = _urlparse
 
 """
 Torrent ids
