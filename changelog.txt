@@ -1,11 +1,12 @@
+Version 0.7.0
+	* Updated to support XBMC Eden
+	* Added progress bars to the torrent list screen
+	* Added status icons to the torrent list screen
 Version 0.6.2
 	* Updated transmissionrpc library to 0.8 (Now supports Transmission 2.40+)
 Version 0.6.1
 	* Add torrent button now supports various search sites as well as adding
 	  locally downloaded .torrent files
-	* Updated to support XBMC Eden
-	* Added progress bars to the torrent list screen
-	* Added status icons to the torrent list screen
 Version 0.6.0
 	* Added icons to buttons (submitted by aivs@yandex.ru)
 	* Added Russian language support (submitted by aivs@yandex.ru)
