@@ -26,6 +26,12 @@
     <string id="292">Could not connect to search site</string>
     <string id="293">Could not download torrent data</string>
 
+    <!-- Status -->
+    <!-- Short torrent status -->
+    <string id="300">working</string>
+    <string id="301">seeding</string>
+    <string id="302">stopped</string>
+
     <!-- Settings -->
     <string id="1000">RPC Settings</string>
     <string id="1001">Host</string>
