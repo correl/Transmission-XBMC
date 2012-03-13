@@ -3,7 +3,6 @@
 
 import sys
 import base64
-import urllib2
 import xbmc
 import xbmcgui
 from basictypes.bytes import Bytes
@@ -148,9 +147,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 if selected < 0:
                     return
                 try:
-                    f = urllib2.urlopen(results[selected]['url'])
-                    data = base64.b64encode(f.read())
-                    self.transmission.add(data)
+                    self.transmission.add_uri(results[selected]['url'])
                 except:
                     xbmcgui.Dialog().ok(_(0), _(293))
                     return
