@@ -30,7 +30,7 @@ class Mininova(Search):
         return torrents
 class TPB(Search):
     def __init__(self):
-        self.search_uri = 'http://thepiratebay.org/search/%s/'
+        self.search_uri = 'http://thepiratebay.se/search/%s/'
     def search(self, terms):
         torrents = []
         url = self.search_uri % '+'.join(terms.split(' '))
@@ -38,7 +38,7 @@ class TPB(Search):
         soup = BeautifulSoup(f.read())
         for details in soup.findAll('a', {'class': 'detLink'}):
             name = details.text
-            url = details.findNext('a', {'href': re.compile('^http:\/\/torrents\.thepiratebay\.org\/')})['href']
+            url = details.findNext('a', {'href': re.compile('^magnet:')})['href']
             td = details.findNext('td')
             seeds = int(td.text)
             td = td.findNext('td')
