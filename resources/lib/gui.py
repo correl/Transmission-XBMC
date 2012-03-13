@@ -15,10 +15,10 @@ __settings__ = sys.modules[ "__main__" ].__settings__
 
 KEY_BUTTON_BACK = 275
 KEY_KEYBOARD_ESC = 61467
+KEY_MENU_ID = 92
 
 EXIT_SCRIPT = ( 6, 10, 247, 275, 61467, 216, 257, 61448, )
 CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
-
 
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
@@ -191,7 +191,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         pass
 
     def onAction( self, action ):
-        if ( action.getButtonCode() in CANCEL_DIALOG ):
+        if ( action.getButtonCode() in CANCEL_DIALOG ) or (action.getId() == KEY_MENU_ID):
             self.close()
     def close(self):
         if self.repeater:
@@ -245,7 +245,7 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         self.repeater.stop()
         super(TorrentInfoGUI, self).close()
     def onAction(self, action):
-        if (action.getButtonCode() in CANCEL_DIALOG):
+        if (action.getButtonCode() in CANCEL_DIALOG) or (action.getId() == KEY_MENU_ID):
             self.close()
             pass
     def onClick(self, controlID):
