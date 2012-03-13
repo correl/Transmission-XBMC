@@ -110,7 +110,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             # Add torrent
             engines = [
                 (_(200), None),
-                (_(201), search.BTJunkie),
                 (_(202), search.TPB),
                 (_(203), search.Mininova),
                 (_(204), search.TorrentReactor),
