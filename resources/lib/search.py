@@ -11,27 +11,6 @@ class Search:
     def search(terms):
         return NotImplemented
 
-class BTJunkie(Search):
-    def __init__(self):
-        self.search_uri = 'http://btjunkie.org/rss.xml?query=%s&o=52'
-    def search(self, terms):
-        torrents = []
-        url = self.search_uri % '+'.join(terms.split(' '))
-        f = urlopen(url)
-        soup = BeautifulStoneSoup(f.read())
-        for item in soup.findAll('item'):
-            (name, seeds, leechers) = re.findall('(.*?)\s+\[(\d+|X)\/(\d+|X)\]$', item.title.text)[0]
-            if seeds == 'X':
-                seeds = 0
-            if leechers == 'X':
-                leechers = 0
-            torrents.append({
-                'url': item.enclosure['url'],
-                'name': name,
-                'seeds': int(seeds),
-                'leechers': int(leechers),
-            })
-        return torrents
 class Mininova(Search):
     def __init__(self):
         self.search_uri = 'http://www.mininova.org/rss/%s'
