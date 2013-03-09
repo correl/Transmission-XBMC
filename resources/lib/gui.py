@@ -61,8 +61,8 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 xbmcgui.Dialog().ok(_(2), message)
 
             return False
-        p.close()
         self.updateTorrents()
+        p.close()
         self.repeater = Repeater(1.0, self.updateTorrents)
         self.repeater.start()
     def updateTorrents(self):
