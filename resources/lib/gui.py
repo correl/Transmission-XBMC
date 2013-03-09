@@ -87,7 +87,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                            'downloading': 'down.png'}
             l.setLabel(torrent.name)
             l.setLabel2(statusline)
-            l.setProperty('TorrentStatusIcon', statusicons[torrent.status])
+            l.setProperty('TorrentStatusIcon', statusicons.get(torrent.status, 'pending.png'))
             l.setProperty('TorrentID', str(i))
             l.setProperty('TorrentProgress', "%.2f" % torrent.progress)
             l.setInfo('torrent', torrent.fields)
