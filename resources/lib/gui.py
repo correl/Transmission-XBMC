@@ -3,10 +3,10 @@
 
 import sys
 import base64
+import threading
 import xbmc
 import xbmcgui
 from basictypes.bytes import Bytes
-from repeater import Repeater
 import search
 
 _ = sys.modules[ "__main__" ].__language__
@@ -19,11 +19,13 @@ KEY_MENU_ID = 92
 EXIT_SCRIPT = ( 6, 10, 247, 275, 61467, 216, 257, 61448, )
 CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
 
+UPDATE_INTERVAL = 1.0
+
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
         self.list = {}
         self.torrents = {}
-        self.repeater = None
+        self.timer = None
     def onInit(self):
         p = xbmcgui.DialogProgress()
         p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
@@ -63,8 +65,8 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             return False
         p.close()
         self.updateTorrents()
-        self.repeater = Repeater(1.0, self.updateTorrents)
-        self.repeater.start()
+        self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
+        self.timer.start()
     def updateTorrents(self):
         list = self.getControl(120)
         torrents = self.transmission.info()
@@ -103,6 +105,9 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 list.addItem(item)
         list.setEnabled(bool(torrents))
 
+        # Update again, after an interval
+        self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
+        self.timer.start()
     def onClick(self, controlID):
         list = self.getControl(120)
         if (controlID == 111):
@@ -190,8 +195,8 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if ( action.getButtonCode() in CANCEL_DIALOG ) or (action.getId() == KEY_MENU_ID):
             self.close()
     def close(self):
-        if self.repeater:
-            self.repeater.stop()
+        if self.timer:
+            self.timer.cancel()
         super(TransmissionGUI, self).close()
 
 
@@ -200,11 +205,12 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         self.transmission = None
         self.torrent_id = None
         self.list = {}
-        self.repeater = Repeater(1.0, self.updateTorrent)
+        self.timer = None
     def setTorrent(self, transmission, t_id):
         self.transmission = transmission
         self.torrent_id = t_id
-        self.repeater.start()
+        self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrent)
+        self.timer.start()
     def updateTorrent(self):
         pbar = self.getControl(219)
         list = self.getControl(220)
@@ -235,10 +241,15 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
                 # Update existing list item
                 l = self.list[i]
             l.setProperty('Progress', '[%3d%%]' % (file['completed'] * 100 / file['size']))
+
+        # Update again, after an interval
+        self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrent)
+        self.timer.start()
     def onInit(self):
         self.updateTorrent()
     def close(self):
-        self.repeater.stop()
+        if self.timer:
+            self.timer.cancel()
         super(TorrentInfoGUI, self).close()
     def onAction(self, action):
         if (action.getButtonCode() in CANCEL_DIALOG) or (action.getId() == KEY_MENU_ID):
