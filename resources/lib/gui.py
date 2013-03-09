@@ -210,10 +210,11 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
         list = self.getControl(220)
         labelName = self.getControl(1)
         labelStatus = self.getControl(2)
+        labelProgress = self.getControl(11)
         torrent = self.transmission.info()[self.torrent_id]
         files = self.transmission.get_files(self.torrent_id)[self.torrent_id]
 
-        statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
+        statusline = "[%(status)s] %(down)s down, %(up)s up (Ratio: %(ratio).2f)" % \
             {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
             'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
             'status': torrent.status}
@@ -223,6 +224,7 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
 
         labelName.setLabel(torrent.name)
         labelStatus.setLabel(statusline)
+        labelProgress.setLabel('%3d%%' % (torrent.progress))
         pbar.setPercent(torrent.progress)
 
         for i, file in files.iteritems():
