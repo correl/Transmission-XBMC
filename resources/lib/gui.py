@@ -245,6 +245,7 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
             self.close()
             pass
     def onClick(self, controlID):
-        pass
+        if controlID == 111:
+            self.close()
     def onFocus(self, controlID):
         pass
