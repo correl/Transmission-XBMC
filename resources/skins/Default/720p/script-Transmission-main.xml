@@ -162,6 +162,22 @@
 			<texture>blue.png</texture>
 		</control>
 		-->
+		<control type="scrollbar" id="121">
+			<description>Scroll bar for the torrent list</description>
+			<posx>935</posx>
+			<posy>35</posy>
+			<width>30</width>
+			<height>500</height>
+			<visible>true</visible>
+			<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+			<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+			<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+			<textureslidernib>ScrollBarNib.png</textureslidernib>
+			<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+			<pulseonselect></pulseonselect>
+			<orientation>vertical</orientation>
+			<showonepage>false</showonepage>
+		</control>
 		<control type="list" id="120">
 			<description>Torrent list</description>
 			<posx>135</posx>
@@ -173,6 +189,7 @@
 			<visible>true</visible>
 			<onleft>111</onleft>
 			<onright>117</onright>
+			<pagecontrol>121</pagecontrol>
 			<itemlayout width="560" height="70">
 				<control type="image">
 					<posx>0</posx>
