@@ -15,6 +15,9 @@
     <string id="106">Запустить все</string>
     <string id="107">Выход</string>
 
+    <string id="110">Название</string>
+    <string id="111">Статус</string>
+
     <!-- Adding / Search -->
     <string id="200">Выбрать торрент-файл</string>
     <string id="202">Искать на ThePirateBay.org</string>

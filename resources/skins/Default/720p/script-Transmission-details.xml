@@ -36,7 +36,7 @@
 				<posy>0</posy>
 				<width>140</width>
 				<height>20</height>
-				<label>Name:</label>
+				<label>$ADDON[script.transmission 110]:</label>
 			</control>
 			<control type="label" id="1">
 				<posx>140</posx>
@@ -50,7 +50,7 @@
 				<posy>20</posy>
 				<width>140</width>
 				<height>30</height>
-				<label>Status:</label>
+				<label>$ADDON[script.transmission 111]:</label>
 			</control>
 			<control type="label" id="2">
 				<posx>140</posx>
