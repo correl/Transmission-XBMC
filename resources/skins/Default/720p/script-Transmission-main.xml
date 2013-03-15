@@ -135,8 +135,8 @@
 				<texturefocus>startall-focus.png</texturefocus>
 				<texturenofocus>startall-nofocus.png</texturenofocus>
 			</control>
-			<control type="button" id="117">
-				<description>Exit</description>
+			<control type="button" id="118">
+				<description>Settings</description>
 				<posx>0</posx>
 				<posy>450</posy>
 				<height>70</height>
@@ -144,12 +144,12 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT107</label>
+				<label>SCRIPT108</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>116</onup>
-				<texturefocus>exit-focus.png</texturefocus>
-				<texturenofocus>exit-nofocus.png</texturenofocus>
+				<texturefocus>settings-focus.png</texturefocus>
+				<texturenofocus>settings-nofocus.png</texturenofocus>
 				<ondown>111</ondown>
 			</control>
 		</control>
@@ -260,6 +260,19 @@
 					<info>ListItem.Property(TorrentProgress)</info>
 				</control>
 			</focusedlayout>
+		</control>
+		<control type="button" id="117">
+			<description>Exit</description>
+			<posx>850</posx>
+			<posy>-5</posy>
+			<height>32</height>
+			<width>64</width>
+			<textoffsety>45</textoffsety>
+			<label>-</label>
+			<font>-</font>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+			<texturenofocus>DialogCloseButton.png</texturenofocus>
+			<visible>system.getbool(input.enablemouse)</visible>
 		</control>
 	</controls>
 </window>
