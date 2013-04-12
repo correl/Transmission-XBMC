@@ -7,6 +7,7 @@ import threading
 import xbmc
 import xbmcgui
 from basictypes.bytes import Bytes
+import transmissionrpc
 import search
 
 _ = sys.modules[ "__main__" ].__language__
@@ -45,7 +46,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         __settings__.setSetting('rpc_password', params['password'])
     def get_rpc_client(self):
         params = self.get_settings()
-        import transmissionrpc
         return transmissionrpc.Client(**params)
     def onInit(self):
         p = xbmcgui.DialogProgress()
@@ -57,7 +57,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.close()
             (type, e, traceback) = sys.exc_info()
             message = _(9000) # Unexpected error
-            import transmissionrpc
             if type is transmissionrpc.TransmissionError:
                 if e.original:
                     if e.original.code is 401:
