@@ -30,24 +30,34 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.list = {}
         self.torrents = {}
         self.timer = None
-    def onInit(self):
-        p = xbmcgui.DialogProgress()
-        p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
+    def get_settings(self):
         params = {
             'address': __settings__.getSetting('rpc_host'),
             'port': __settings__.getSetting('rpc_port'),
             'user': __settings__.getSetting('rpc_user'),
             'password': __settings__.getSetting('rpc_password')
         }
+        return params
+    def set_settings(self, params):
+        __settings__.setSetting('rpc_host', params['address'])
+        __settings__.setSetting('rpc_port', params['port'])
+        __settings__.setSetting('rpc_user', params['user'])
+        __settings__.setSetting('rpc_password', params['password'])
+    def get_rpc_client(self):
+        params = self.get_settings()
         import transmissionrpc
+        return transmissionrpc.Client(**params)
+    def onInit(self):
+        p = xbmcgui.DialogProgress()
+        p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
         try:
-            self.transmission = transmissionrpc.Client(**params)
+            self.transmission = self.get_rpc_client()
         except:
             p.close()
             self.close()
             (type, e, traceback) = sys.exc_info()
-
             message = _(9000) # Unexpected error
+            import transmissionrpc
             if type is transmissionrpc.TransmissionError:
                 if e.original:
                     if e.original.code is 401:
@@ -65,7 +75,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             else:
                 message = _(9000) # Unexpected error
                 xbmcgui.Dialog().ok(_(2), message)
-
             return False
         self.updateTorrents()
         p.close()
@@ -181,6 +190,26 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if (controlID == 117):
             # Exit button
             self.close()
+        if (controlID == 118):
+            # Settings button
+            prev_settings = self.get_settings()
+            __settings__.openSettings()
+            p = xbmcgui.DialogProgress()
+            p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
+            try:
+                self.transmission = self.get_rpc_client()
+                self.updateTorrents()
+                p.close()
+            except:
+                p.close()
+                xbmcgui.Dialog().ok(_(2), _(9001))
+                # restore settings
+                self.set_settings(prev_settings)
+                try:
+                    self.transmission = self.get_rpc_client()
+                except err:
+                    xbmcgui.Dialog().ok(_(2), _(9001))
+                    self.close()
         if (controlID == 120):
             # A torrent was chosen, show details
             item = list.getSelectedItem()
