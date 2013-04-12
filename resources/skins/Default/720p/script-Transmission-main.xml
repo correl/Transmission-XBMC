@@ -215,9 +215,16 @@
 				<control type="progress">
 					<posx>90</posx>
 					<posy>40</posy>
-					<width>700</width>
+					<width>640</width>
 					<height>20</height>
 					<info>ListItem.Property(TorrentProgress)</info>
+				</control>
+				<control type="label">
+					<posx>735</posx>
+					<posy>33</posy>
+					<width>60</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
 				</control>
 			</itemlayout>
 			<focusedlayout width="560" height="70">
@@ -255,9 +262,16 @@
 				<control type="progress">
 					<posx>90</posx>
 					<posy>40</posy>
-					<width>700</width>
+					<width>640</width>
 					<height>20</height>
 					<info>ListItem.Property(TorrentProgress)</info>
+				</control>
+				<control type="label">
+					<posx>735</posx>
+					<posy>33</posy>
+					<width>60</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
 				</control>
 			</focusedlayout>
 		</control>

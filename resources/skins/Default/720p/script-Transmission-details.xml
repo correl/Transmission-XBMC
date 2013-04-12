@@ -63,9 +63,16 @@
 				<description>Torrent progress</description>
 				<posx>20</posx>
 				<posy>70</posy>
-				<width>890</width>
+				<width>830</width>
 				<height>30</height>
 				<visible>true</visible>
+			</control>
+			<control type="label" id="11">
+				<posx>855</posx>
+				<posy>69</posy>
+				<width>70</width>
+				<height>30</height>
+				<label></label>
 			</control>
 		</control>
 		<control type="list" id="220">
