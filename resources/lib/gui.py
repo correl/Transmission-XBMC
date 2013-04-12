@@ -21,6 +21,10 @@ CANCEL_DIALOG = EXIT_SCRIPT + ( 216, 257, 61448, )
 
 UPDATE_INTERVAL = 1.0
 
+STATUS_ICONS = {'stopped': 'pause.png',
+                'seeding': 'ok.png',
+                'downloading': 'down.png'}
+
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
         self.list = {}
@@ -69,7 +73,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.timer.start()
     def updateTorrents(self):
         list = self.getControl(120)
-        torrents = self.transmission.info()
+        self.torrents = self.transmission.info()
         for i, torrent in torrents.iteritems():
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
                 {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
@@ -83,13 +87,9 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             else:
                 # Update existing list item
                 l = self.list[i]
-            self.torrents = torrents
-            statusicons = {'stopped': 'pause.png',
-                           'seeding': 'ok.png',
-                           'downloading': 'down.png'}
             l.setLabel(torrent.name)
             l.setLabel2(statusline)
-            l.setProperty('TorrentStatusIcon', statusicons[torrent.status])
+            l.setProperty('TorrentStatusIcon', STATUS_ICONS.get(torrent.status, 'pending.png'))
             l.setProperty('TorrentID', str(i))
             l.setProperty('TorrentProgress', "%3d%%" % torrent.progress)
             l.setInfo('torrent', torrent.fields)
