@@ -131,7 +131,7 @@
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>115</onup>
-				<ondown>117</ondown>
+				<ondown>118</ondown>
 				<texturefocus>startall-focus.png</texturefocus>
 				<texturenofocus>startall-nofocus.png</texturenofocus>
 			</control>
@@ -189,6 +189,7 @@
 			<visible>true</visible>
 			<onleft>111</onleft>
 			<onright>117</onright>
+                        <onup>117</onup>
 			<pagecontrol>121</pagecontrol>
 			<itemlayout width="560" height="70">
 				<control type="image">
@@ -287,6 +288,8 @@
 			<texturefocus>DialogCloseButton-focus.png</texturefocus>
 			<texturenofocus>DialogCloseButton.png</texturenofocus>
 			<visible>system.getbool(input.enablemouse)</visible>
+                        <onleft>111</onleft>
+                        <ondown>120</ondown>
 		</control>
 	</controls>
 </window>
