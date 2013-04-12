@@ -74,7 +74,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def updateTorrents(self):
         list = self.getControl(120)
         self.torrents = self.transmission.info()
-        for i, torrent in torrents.iteritems():
+        for i, torrent in self.torrents.iteritems():
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
                 {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
                 'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
@@ -95,7 +95,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             l.setInfo('torrent', torrent.fields)
             l.setInfo('video', {'episode': int(torrent.progress)})
 
-        removed = [id for id in self.list.keys() if id not in torrents.keys()]
+        removed = [id for id in self.list.keys() if id not in self.torrents.keys()]
         if len(removed) > 0:
             # Clear torrents from the list that have been removed
             for id in removed:
@@ -103,7 +103,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             list.reset()
             for id, item in self.list.iteritems():
                 list.addItem(item)
-        list.setEnabled(bool(torrents))
+        list.setEnabled(bool(self.torrents))
 
         # Update again, after an interval
         self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
