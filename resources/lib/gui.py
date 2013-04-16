@@ -113,9 +113,10 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 list.addItem(item)
         list.setEnabled(bool(self.torrents))
 
-        # Update again, after an interval
-        self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
-        self.timer.start()
+        # Update again, after an interval, but only if the timer has not been cancelled
+        if self.timer:
+          self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
+          self.timer.start()
     def onClick(self, controlID):
         list = self.getControl(120)
         if (controlID == 111):
@@ -225,6 +226,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def close(self):
         if self.timer:
             self.timer.cancel()
+            self.timer = None
         super(TransmissionGUI, self).close()
 
 
