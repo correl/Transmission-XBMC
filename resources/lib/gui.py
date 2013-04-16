@@ -203,7 +203,12 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                     xbmcgui.Dialog().ok(_(2), _(9001))
                     self.close()
         if (controlID == 120):
+            # Do nothing, just select the item
+            pass
+    def onDoubleClick(self, controlID):
+        if (controlID == 120):
             # A torrent was chosen, show details
+            list = self.getControl(120)
             item = list.getSelectedItem()
             w = TorrentInfoGUI("script-Transmission-details.xml", __settings__.getAddonInfo('path') ,"Default")
             w.setTorrent(self.transmission, int(item.getProperty('TorrentID')))
