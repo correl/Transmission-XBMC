@@ -28,7 +28,6 @@ STATUS_ICONS = {'stopped': 'pause.png',
 
 class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
-        self.list = {}
         self.torrents = {}
         self.timer = None
     def get_settings(self):
@@ -82,19 +81,19 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def updateTorrents(self):
         list = self.getControl(120)
         self.torrents = self.transmission.info()
-        for i, torrent in self.torrents.iteritems():
+        i = 0
+        for torrentid, torrent in self.torrents.iteritems():
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
                 {'down': Bytes.format(torrent.downloadedEver), 'pct': torrent.progress, \
                 'up': Bytes.format(torrent.uploadedEver), 'ratio': torrent.ratio, \
                 'status': torrent.status}
-            if i not in self.list:
+            if i >= list.size():
                 # Create a new list item
                 l = xbmcgui.ListItem(label=torrent.name, label2=statusline)
                 list.addItem(l)
-                self.list[i] = l
             else:
                 # Update existing list item
-                l = self.list[i]
+                l = list.getListItem(i)
             l.setLabel(torrent.name)
             l.setLabel2(statusline)
             l.setProperty('TorrentStatusIcon', STATUS_ICONS.get(torrent.status, 'pending.png'))
@@ -102,16 +101,10 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             l.setProperty('TorrentProgress', "%3d%%" % torrent.progress)
             l.setInfo('torrent', torrent.fields)
             l.setInfo('video', {'episode': int(torrent.progress)})
+            i += 1
 
-        removed = [id for id in self.list.keys() if id not in self.torrents.keys()]
-        if len(removed) > 0:
-            # Clear torrents from the list that have been removed
-            for id in removed:
-                del self.list[id]
-            list.reset()
-            for id, item in self.list.iteritems():
-                list.addItem(item)
-        list.setEnabled(bool(self.torrents))
+        for i in range(list.size() - len(self.torrents)):
+            list.removeItem(list.size() - 1)
 
         # Update again, after an interval
         self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
