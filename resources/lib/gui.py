@@ -30,6 +30,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def __init__(self, strXMLname, strFallbackPath, strDefaultName, bforeFallback=0):
         self.torrents = {}
         self.timer = None
+        self.filter = lambda x : True
     def get_settings(self):
         params = {
             'address': __settings__.getSetting('rpc_host'),
@@ -47,6 +48,9 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         params = self.get_settings()
         return transmissionrpc.Client(**params)
     def onInit(self):
+        self.getControl(125).setSelected(True)
+        self.getControl(126).setSelected(False)
+        self.getControl(127).setSelected(False)
         p = xbmcgui.DialogProgress()
         p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
         try:
@@ -81,6 +85,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def updateTorrents(self):
         list = self.getControl(120)
         self.torrents = self.transmission.info()
+        self.torrents = dict((k, v) for (k, v) in self.torrents.items() if self.filter(v))
         i = 0
         for torrentid, torrent in self.torrents.iteritems():
             statusline = "[%(status)s] %(down)s down (%(pct).2f%%), %(up)s up (Ratio: %(ratio).2f)" % \
@@ -205,6 +210,21 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if (controlID == 120):
             # Do nothing, just select the item
             pass
+        if (controlID == 125):
+            # Show all torrents
+            self.getControl(126).setSelected(False)
+            self.getControl(127).setSelected(False)
+            self.filter = lambda torrent : True
+        if (controlID == 126):
+            # Show only active downloads
+            self.getControl(125).setSelected(False)
+            self.getControl(127).setSelected(False)
+            self.filter = lambda torrent : True if torrent.status != "seeding" else False
+        if (controlID == 127):
+            # Show finished downloads
+            self.getControl(125).setSelected(False)
+            self.getControl(126).setSelected(False)
+            self.filter = lambda torrent : True if torrent.status == "seeding" else False
     def onDoubleClick(self, controlID):
         if (controlID == 120):
             # A torrent was chosen, show details

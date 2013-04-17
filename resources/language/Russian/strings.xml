@@ -14,10 +14,15 @@
     <string id="105">Остановить все</string>
     <string id="106">Запустить все</string>
     <string id="107">Выход</string>
-    <string id="108">Настойки</string>
+    <string id="108">Настройки</string>
 
     <string id="110">Название</string>
     <string id="111">Статус</string>
+
+    <string id="112">Показывать:</string>
+    <string id="113">Все</string>
+    <string id="114">Активные</string>
+    <string id="115">Завершенные</string>
 
     <!-- Adding / Search -->
     <string id="200">Выбрать торрент-файл</string>

@@ -19,6 +19,11 @@
     <string id="110">Name</string>
     <string id="111">Status</string>
 
+    <string id="112">Show:</string>
+    <string id="113">All</string>
+    <string id="114">Downloading</string>
+    <string id="115">Seeding</string>
+
     <!-- Adding / Search -->
     <string id="200">Browse for torrent file</string>
     <string id="202">Search ThePirateBay.org</string>

@@ -167,7 +167,7 @@
 			<posx>935</posx>
 			<posy>35</posy>
 			<width>30</width>
-			<height>500</height>
+			<height>480</height>
 			<visible>true</visible>
 			<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
 			<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
@@ -183,7 +183,7 @@
 			<posx>135</posx>
 			<posy>35</posy>
 			<width>800</width>
-			<height>500</height>
+			<height>480</height>
 			<viewtype label="Torrent List">list</viewtype>
 			<orientation>vertical</orientation>
 			<visible>true</visible>
@@ -290,6 +290,59 @@
 			<visible>system.getbool(input.enablemouse)</visible>
                         <onleft>111</onleft>
                         <ondown>120</ondown>
+		</control>
+		<control type="label">
+			<posx>155</posx>
+			<posy>523</posy>
+			<width>60</width>
+			<height>20</height>
+			<font>font12</font>
+			<label>SCRIPT112</label>
+		</control>
+		<control type="radiobutton" id="125">
+			<description>Show all</description>
+			<posx>240</posx>
+			<posy>525</posy>
+			<width>70</width>
+			<height>20</height>
+			<visible>true</visible>
+			<colordiffuse>FFFFFFFF</colordiffuse>
+			<texturefocus>button-focus_orig.png</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<label>SCRIPT113</label>
+			<font>font12</font>
+			<textcolor>FFFFFFFF</textcolor>
+			<disabledcolor>80FFFFFF</disabledcolor>
+		</control>
+		<control type="radiobutton" id="126">
+			<description>Show downloading</description>
+			<posx>340</posx>
+			<posy>525</posy>
+			<width>150</width>
+			<height>20</height>
+			<visible>true</visible>
+			<colordiffuse>FFFFFFFF</colordiffuse>
+			<texturefocus>button-focus_orig.png</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<label>SCRIPT114</label>
+			<font>font12</font>
+			<textcolor>FFFFFFFF</textcolor>
+			<disabledcolor>80FFFFFF</disabledcolor>
+		</control>
+		<control type="radiobutton" id="127">
+			<description>Show finished</description>
+			<posx>520</posx>
+			<posy>525</posy>
+			<width>115</width>
+			<height>20</height>
+			<visible>true</visible>
+			<colordiffuse>FFFFFFFF</colordiffuse>
+			<texturefocus>button-focus_orig.png</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<label>SCRIPT115</label>
+			<font>font12</font>
+			<textcolor>FFFFFFFF</textcolor>
+			<disabledcolor>80FFFFFF</disabledcolor>
 		</control>
 	</controls>
 </window>
