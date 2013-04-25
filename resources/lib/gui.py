@@ -205,22 +205,23 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             # Settings button
             prev_settings = self.get_settings()
             __settings__.openSettings()
-            p = xbmcgui.DialogProgress()
-            p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
-            try:
-                self.transmission = self.get_rpc_client()
-                self.updateTorrents()
-                p.close()
-            except:
-                p.close()
-                xbmcgui.Dialog().ok(_(2), _(9001))
-                # restore settings
-                self.set_settings(prev_settings)
+            if self.get_settings() != prev_settings:
+                p = xbmcgui.DialogProgress()
+                p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
                 try:
                     self.transmission = self.get_rpc_client()
-                except err:
+                    self.updateTorrents()
+                    p.close()
+                except:
+                    p.close()
                     xbmcgui.Dialog().ok(_(2), _(9001))
-                    self.close()
+                    # restore settings
+                    self.set_settings(prev_settings)
+                    try:
+                        self.transmission = self.get_rpc_client()
+                    except err:
+                        xbmcgui.Dialog().ok(_(2), _(9001))
+                        self.close()
         if (controlID == self.getCurrentViewControlID()):
             # Do nothing, just select the item
             pass
