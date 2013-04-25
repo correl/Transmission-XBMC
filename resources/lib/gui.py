@@ -31,6 +31,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.torrents = {}
         self.timer = None
         self.filter = lambda x : True
+        self.view = 'list'
     def get_settings(self):
         params = {
             'address': __settings__.getSetting('rpc_host'),
@@ -78,12 +79,22 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 message = _(9000) # Unexpected error
                 xbmcgui.Dialog().ok(_(2), message)
             return False
+        self.view = 'list'
+        self.getControl(120).setVisible(True)
+        self.getControl(122).setVisible(False)
         self.updateTorrents()
         p.close()
         self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
         self.timer.start()
-    def updateTorrents(self):
-        list = self.getControl(120)
+    def getCurrentViewControlID(self):
+        if self.view == 'list':
+            return 120
+        elif self.view == 'table':
+            return 122
+    def getCurrentViewControl(self):
+        return self.getControl(self.getCurrentViewControlID())
+    def showTorrents(self):
+        list = self.getCurrentViewControl()
         self.torrents = self.transmission.info()
         self.torrents = dict((k, v) for (k, v) in self.torrents.items() if self.filter(v))
         i = 0
@@ -114,8 +125,11 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         # Update again, after an interval
         self.timer = threading.Timer(UPDATE_INTERVAL, self.updateTorrents)
         self.timer.start()
+    def updateTorrents(self):
+        self.torrents = self.transmission.info()
+        self.showTorrents()
     def onClick(self, controlID):
-        list = self.getControl(120)
+        list = self.getCurrentViewControl()
         if (controlID == 111):
             # Add torrent
             engines = [
@@ -207,7 +221,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 except err:
                     xbmcgui.Dialog().ok(_(2), _(9001))
                     self.close()
-        if (controlID == 120):
+        if (controlID == self.getCurrentViewControlID()):
             # Do nothing, just select the item
             pass
         if (controlID == 125):
@@ -225,6 +239,16 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.getControl(125).setSelected(False)
             self.getControl(126).setSelected(False)
             self.filter = lambda torrent : True if torrent.status == "seeding" else False
+        if (controlID == 128):
+            self.view = 'list'
+            self.showTorrents()
+            self.getControl(120).setVisible(True)
+            self.getControl(122).setVisible(False)
+        if (controlID == 129):
+            self.view = 'table'
+            self.showTorrents()
+            self.getControl(120).setVisible(False)
+            self.getControl(122).setVisible(True)
     def onDoubleClick(self, controlID):
         if (controlID == 120):
             # A torrent was chosen, show details

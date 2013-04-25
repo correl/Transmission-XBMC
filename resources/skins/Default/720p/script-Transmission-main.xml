@@ -276,6 +276,115 @@
 				</control>
 			</focusedlayout>
 		</control>
+		<control type="list" id="122">
+			<description>Torrent table</description>
+			<posx>135</posx>
+			<posy>35</posy>
+			<width>800</width>
+			<height>480</height>
+			<viewtype label="Torrent table">table</viewtype>
+			<orientation>vertical</orientation>
+			<visible>true</visible>
+			<onleft>111</onleft>
+			<onright>117</onright>
+			<pagecontrol>121</pagecontrol>
+			<itemlayout width="560" height="40">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>800</width>
+					<height>40</height>
+					<texture>list-bg.png</texture>
+				</control>
+				<control type="image">
+					<posx>10</posx>
+					<posy>5</posy>
+					<width>32</width>
+					<height>32</height>
+					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
+				</control>
+				<control type="label">
+					<posx>90</posx>
+					<posy>5</posy>
+					<width>630</width>
+					<height>20</height>
+					<label>$INFO[ListItem.label]</label>
+				</control>
+				<control type="label">
+					<posx>735</posx>
+					<posy>5</posy>
+					<width>60</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="560" height="40">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>800</width>
+					<height>40</height>
+					<visible>Control.HasFocus(120)</visible>
+					<texture border="5">list-bg-selected.png</texture>
+				</control>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>800</width>
+					<height>40</height>
+					<visible>!Control.HasFocus(120)</visible>
+					<texture border="5">list-bg-selected-nofocus.png</texture>
+				</control>
+				<control type="image">
+					<posx>10</posx>
+					<posy>5</posy>
+					<width>32</width>
+					<height>32</height>
+					<texture>icons/$INFO[ListItem.Property(TorrentStatusIcon)]</texture>
+				</control>
+				<control type="label">
+					<posx>90</posx>
+					<posy>5</posy>
+					<width>630</width>
+					<height>20</height>
+					<label>$INFO[ListItem.label]</label>
+					<scroll>true</scroll>
+				</control>
+				<control type="label">
+					<posx>735</posx>
+					<posy>5</posy>
+					<width>60</width>
+					<height>20</height>
+					<label>$INFO[ListItem.Property(TorrentProgress)]</label>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="button" id="128">
+			<description>List view button</description>
+			<posx>840</posx>
+			<posy>520</posy>
+			<width>40</width>
+			<height>30</height>
+			<label>-</label>
+			<font>-</font>
+			<onclick>PreviousMenu</onclick>
+			<texturefocus>list-focus.png</texturefocus>
+			<texturenofocus>list.png</texturenofocus>
+			<visible>true</visible>
+		</control>
+		<control type="button" id="129">
+			<description>Table view button</description>
+			<posx>880</posx>
+			<posy>520</posy>
+			<width>40</width>
+			<height>30</height>
+			<label>-</label>
+			<font>-</font>
+			<onclick>PreviousMenu</onclick>
+			<texturefocus>table-focus.png</texturefocus>
+			<texturenofocus>table.png</texturenofocus>
+			<visible>true</visible>
+		</control>
 		<control type="button" id="117">
 			<description>Exit</description>
 			<posx>850</posx>
