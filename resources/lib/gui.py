@@ -9,6 +9,7 @@ import xbmcgui
 from basictypes.bytes import Bytes
 import transmissionrpc
 import search
+import common
 
 _ = sys.modules[ "__main__" ].__language__
 __settings__ = sys.modules[ "__main__" ].__settings__
@@ -31,27 +32,16 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         self.list = {}
         self.torrents = {}
         self.timer = None
-    def get_settings(self):
-        params = {
-            'address': __settings__.getSetting('rpc_host'),
-            'port': __settings__.getSetting('rpc_port'),
-            'user': __settings__.getSetting('rpc_user'),
-            'password': __settings__.getSetting('rpc_password')
-        }
-        return params
     def set_settings(self, params):
         __settings__.setSetting('rpc_host', params['address'])
         __settings__.setSetting('rpc_port', params['port'])
         __settings__.setSetting('rpc_user', params['user'])
         __settings__.setSetting('rpc_password', params['password'])
-    def get_rpc_client(self):
-        params = self.get_settings()
-        return transmissionrpc.Client(**params)
     def onInit(self):
         p = xbmcgui.DialogProgress()
         p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
         try:
-            self.transmission = self.get_rpc_client()
+            self.transmission = common.get_rpc_client()
         except:
             p.close()
             self.close()
@@ -192,12 +182,12 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             self.close()
         if (controlID == 118):
             # Settings button
-            prev_settings = self.get_settings()
+            prev_settings = common.get_settings()
             __settings__.openSettings()
             p = xbmcgui.DialogProgress()
             p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
             try:
-                self.transmission = self.get_rpc_client()
+                self.transmission = common.get_rpc_client()
                 self.updateTorrents()
                 p.close()
             except:
@@ -206,7 +196,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 # restore settings
                 self.set_settings(prev_settings)
                 try:
-                    self.transmission = self.get_rpc_client()
+                    self.transmission = common.get_rpc_client()
                 except err:
                     xbmcgui.Dialog().ok(_(2), _(9001))
                     self.close()

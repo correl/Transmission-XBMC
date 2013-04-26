@@ -46,6 +46,7 @@
     <string id="1002">Порт</string>
     <string id="1003">Пользователь</string>
     <string id="1004">Пароль</string>
+    <string id="1005">Останавливать все закачки на время просмотра видео</string>
 
     <!-- Errors -->
     <string id="9000">Неизвестная ошибка</string>

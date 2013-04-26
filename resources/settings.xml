@@ -5,4 +5,5 @@
     <setting id="rpc_port" type="number" label="1002" default="9091" />
     <setting id="rpc_user" type="text" label="1003" default="" />
     <setting id="rpc_password" type="text" option="hidden" label="1004" default="" />
+    <setting id="stop_all_on_playback" type="bool" label="1005" default="false" />
 </settings>

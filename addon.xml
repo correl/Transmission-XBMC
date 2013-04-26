@@ -10,6 +10,9 @@
   </requires>
   <extension point="xbmc.python.script"
              library="default.py" />
+  <extension point="xbmc.service" 
+             library="resources/lib/player.py" 
+             start="startup"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">A client for the popular Transmission BitTorrent application</summary>
     <summary lang="hu">A népszerű Transmission Bittorrent alkalmazás vezérlése</summary>
