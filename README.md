@@ -14,7 +14,7 @@ Currently, Transmission-XBMC supports viewing, adding, removing, starting and st
 Installation
 ------------
 
-This script is intended for XBMC 10.05 (Dharma). For the 9.11 (Camelot) release, use [version 0.5.0](http://github.com/correl/Transmission-XBMC/downloads)
+This script is intended for XBMC 13 (Gotham).
 
 This script can be installed via the addon manager within XBMC. Attempting to install it manually may not work, as it requires the simplejson library which is automatically installed by the addon manager.
 
