@@ -50,6 +50,22 @@ class TPB(Search):
                 'leechers': leechers,
             })
         return torrents
+class Kickass(Search):
+    def __init__(self):
+        self.search_uri = 'http://kickass.to/usearch/%s/?field=seeders&sorder=desc&rss=1'
+    def search(self, terms):
+        torrents = []
+        url = self.search_uri % '+'.join(terms.split(' '))
+        f = urlopen(url)
+        soup = BeautifulStoneSoup(f.read())
+        for item in soup.findAll('item'):
+            torrents.append({
+                'url': item.enclosure['url'],
+                'name': item.title.text,
+                'seeds': int(item.find('torrent:seeds').text),
+                'leechers': int(item.find('torrent:peers').text),
+            })
+        return torrents
 
 if __name__ == '__main__':
     s = TPB()
