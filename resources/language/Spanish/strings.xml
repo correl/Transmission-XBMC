@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="0">Transmission</string>
+
+    <string id="1">Conectando con Transmission</string>
+    <string id="2">Transmission Error</string>
+    <string id="3">¿Abrir diálogo de configuración?</string>
+
+    <!-- Buttons -->
+    <string id="101">Agregar</string>
+    <string id="102">Eliminar</string>
+    <string id="103">Pausar</string>
+    <string id="104">Iniciar</string>
+    <string id="105">Pausar Todo</string>
+    <string id="106">Iniciar Todo</string>
+    <string id="107">Salir</string>
+    <string id="108">Configuración</string>
+
+    <string id="110">Nombre</string>
+    <string id="111">Estado</string>
+
+    <!-- Adding / Search -->
+    <string id="200">Buscar un archivo torrent</string>
+    <string id="202">Buscar en ThePirateBay.org</string>
+    <string id="203">Buscar en Mininova.org</string>
+    <string id="204">Buscar en Torrentreactor.net</string>
+    <string id="290">Buscando...</string>
+    <string id="291">No se han encontrado resultados</string>
+    <string id="292">No se puede conectar con el buscador</string>
+    <string id="293">No se ha podido descargar datos del torrent</string>
+
+    <!-- Status -->
+    <!-- Short torrent status -->
+    <string id="300">trabajando</string>
+    <string id="301">compartiendo</string>
+    <string id="302">datenido</string>
+
+    <!-- Settings -->
+    <string id="1000">Configuración RPC</string>
+    <string id="1001">Host</string>
+    <string id="1002">Puerto</string>
+    <string id="1003">Usuario</string>
+    <string id="1004">Contraseña</string>
+    <string id="1005">Detener todos los torrents durante la reproducción de video</string>
+
+    <!-- Errors -->
+    <string id="9000">Ha ocurrido un error inesperado</string>
+    <string id="9001">No se ha podido conectar con Transmission</string>
+    <string id="9002">Usuario o contraseña inválidos</string>
+</strings>
