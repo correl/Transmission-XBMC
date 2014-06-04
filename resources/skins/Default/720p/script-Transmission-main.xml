@@ -42,7 +42,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT101</label>
+				<label>$ADDON[script.transmission 101]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<ondown>112</ondown>
@@ -59,7 +59,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT102</label>
+				<label>$ADDON[script.transmission 102]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>111</onup>
@@ -76,7 +76,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT103</label>
+				<label>$ADDON[script.transmission 103]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>112</onup>
@@ -93,7 +93,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT104</label>
+				<label>$ADDON[script.transmission 104]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>113</onup>
@@ -110,7 +110,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT105</label>
+				<label>$ADDON[script.transmission 105]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>114</onup>
@@ -127,7 +127,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT106</label>
+				<label>$ADDON[script.transmission 106]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>115</onup>
@@ -144,7 +144,7 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<textoffsety>45</textoffsety>
-				<label>SCRIPT108</label>
+				<label>$ADDON[script.transmission 108]</label>
 				<font>font12_title</font>
 				<onright>120</onright>
 				<onup>116</onup>
