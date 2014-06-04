@@ -1,6 +1,6 @@
 import re
 import socket
-from urllib2 import urlopen
+from urllib2 import urlopen, URLError
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
 
 socket.setdefaulttimeout(15)
@@ -30,11 +30,19 @@ class Mininova(Search):
         return torrents
 class TPB(Search):
     def __init__(self):
-        self.search_uri = 'http://thepiratebay.se/search/%s/'
+        self.search_uris = ['http://thepiratebay.se/search/%s/',
+                            'http://pirateproxy.net/search/%s/']
     def search(self, terms):
         torrents = []
-        url = self.search_uri % '+'.join(terms.split(' '))
-        f = urlopen(url)
+        f = None
+        for url in [u % '+'.join(terms.split(' ')) for u in self.search_uris]:
+            try:
+                f = urlopen(url)
+                break
+            except URLError:
+                continue
+        if not f:
+            raise Exception('Out of pirate bay proxies')
         soup = BeautifulSoup(f.read())
         for details in soup.findAll('a', {'class': 'detLink'}):
             name = details.text

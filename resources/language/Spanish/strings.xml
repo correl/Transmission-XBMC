@@ -21,7 +21,7 @@
 
     <!-- Adding / Search -->
     <string id="200">Buscar un archivo torrent</string>
-    <string id="202">Buscar en ThePirateBay.org</string>
+    <string id="202">Buscar en ThePirateBay</string>
     <string id="203">Buscar en Mininova.org</string>
     <string id="204">Buscar en KickassTorrents</string>
     <string id="290">Buscando...</string>
