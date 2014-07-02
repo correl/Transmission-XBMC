@@ -90,8 +90,6 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             l.setProperty('TorrentStatusIcon', STATUS_ICONS.get(torrent.status, 'pending.png'))
             l.setProperty('TorrentID', str(i))
             l.setProperty('TorrentProgress', "%3d%%" % torrent.progress)
-            l.setInfo('torrent', torrent.fields)
-            l.setInfo('video', {'episode': int(torrent.progress)})
 
         removed = [id for id in self.list.keys() if id not in self.torrents.keys()]
         if len(removed) > 0:
