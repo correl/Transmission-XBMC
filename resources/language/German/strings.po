@@ -95,7 +95,7 @@ msgstr "Status"
 # empty strings from id 112 to 199
 msgctxt "#200"
 msgid "Browse for torrent file"
-msgstr ".torrent-Datei suchen"
+msgstr "Verzeichnisse nach lokaler .torrent-Datei durchsuchen"
 
 # empty string with id 201
 msgctxt "#202"
@@ -166,7 +166,7 @@ msgstr "Passwort"
 
 msgctxt "#1005"
 msgid "Stop all torrents on video playback"
-msgstr "Alle Torrents mit Video Playback stopppen"
+msgstr "Alle Torrent stoppen während ein Video abgespielt wird"
 
 # Errors
 # empty strings from id 1006 to 8999
