@@ -214,7 +214,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
     def close(self):
         if self.timer:
             self.timer.cancel()
-            self.timer = None
+            self.timer.join()
         super(TransmissionGUI, self).close()
 
 
@@ -270,6 +270,7 @@ class TorrentInfoGUI(xbmcgui.WindowXMLDialog):
     def close(self):
         if self.timer:
             self.timer.cancel()
+            self.timer.join()
         super(TorrentInfoGUI, self).close()
     def onAction(self, action):
         if (action.getButtonCode() in CANCEL_DIALOG) or (action.getId() == KEY_MENU_ID):
