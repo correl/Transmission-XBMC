@@ -6,14 +6,6 @@ import sys
 import xbmc
 import xbmcaddon
 
-__scriptname__ = "Transmission-XBMC"
-__author__ = "Correl Roush <correl@gmail.com>"
-__url__ = "http://github.com/correl/Transmission-XBMC"
-__svn_url__ = ""
-__credits__ = ""
-__version__ = "0.5.2"
-__XBMC_Revision__ = "30377"
-
 __settings__ = xbmcaddon.Addon(id='script.transmission')
 __language__ = __settings__.getLocalizedString
 
