@@ -1,5 +1,5 @@
 <window>
-	<defaultcontrol>220</defaultcontrol>
+	<defaultcontrol>111</defaultcontrol>
 	<allowoverlay>yes</allowoverlay>
 	<coordinates>
 		<system>1</system>
@@ -81,6 +81,7 @@
 			<posy>185</posy>
 			<width>950</width>
 			<height>330</height>
+                        <onup>111</onup>
 			<viewtype label="File List">list</viewtype>
 			<orientation>vertical</orientation>
 			<visible>true</visible>
@@ -146,6 +147,7 @@
 			<posy>0</posy>
 			<width>64</width>
 			<height>32</height>
+                        <ondown>220</ondown>
 			<label>-</label>
 			<font>-</font>
 			<onclick>PreviousMenu</onclick>
