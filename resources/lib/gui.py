@@ -149,7 +149,7 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 if selected < 0:
                     return
                 try:
-                    self.transmission.add_uri(results[selected]['url'])
+                    self.transmission.add_torrent(results[selected]['url'])
                 except:
                     xbmcgui.Dialog().ok(_(0), _(293))
                     return
