@@ -1,3 +1,9 @@
+Version 0.7.6
+        * Updated transmissionrpc library to 0.11, including a patch for gzipped http responses
+        * Fixed an issue listing torrents
+        * Fixed an issue with the addon not terminating properly
+        * Addressed a usability issue with the torrent detail screen
+        * Added German language support (submitted by Alexander Dormann <alexdo@alexdo.de>)
 Version 0.7.5
         * Updated to support XBMC Gotham
         * Added proxy failover support to Pirate Bay search
