@@ -12,6 +12,8 @@ from transmissionrpc.utils import LOGGER, get_arguments, make_rpc_name, argument
 from transmissionrpc.httphandler import DefaultHTTPHandler
 from transmissionrpc.torrent import Torrent
 from transmissionrpc.session import Session
+from gzip import GzipFile
+from io import BytesIO
 
 from six import PY3, integer_types, string_types, iteritems
 
@@ -376,7 +378,12 @@ class Client(object):
             # there has been some problem with T's built in torrent fetcher,
             # use a python one instead
             torrent_file = urlopen(torrent)
-            torrent_data = torrent_file.read()
+            if torrent_file.info().get('Content-Encoding') == 'gzip':
+                buf = BytesIO(torrent_file.read())
+                gzip_file = GzipFile(fileobj=buf)
+                torrent_data = gzip_file.read()
+            else:
+                torrent_data = torrent_file.read()
             torrent_data = base64.b64encode(torrent_data).decode('utf-8')
         if parsed_uri.scheme in ['file']:
             filepath = torrent
