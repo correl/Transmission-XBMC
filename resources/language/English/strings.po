@@ -86,6 +86,10 @@ msgctxt "#32111"
 msgid "Status"
 msgstr ""
 
+msgctxt "#32112"
+msgid "Torrent Details"
+msgstr ""
+
 #Adding / Search
 #empty strings from id 32112 to 32199
 

@@ -24,7 +24,7 @@
 			<width>960</width>
 			<height>30</height>
 			<visible>true</visible>
-			<label>Transmission XBMC - Details</label>
+			<label>$ADDON[script.transmission 32112]</label>
 			<font>font11</font>
 			<textcolor>white</textcolor>
 			<align>center</align>
