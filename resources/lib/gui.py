@@ -39,31 +39,31 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         __settings__.setSetting('rpc_password', params['password'])
     def onInit(self):
         p = xbmcgui.DialogProgress()
-        p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
+        p.create(_(32000), _(32001)) # 'Transmission', 'Connecting to Transmission'
         try:
             self.transmission = common.get_rpc_client()
         except:
             p.close()
             self.close()
             (type, e, traceback) = sys.exc_info()
-            message = _(9000) # Unexpected error
+            message = _(32900) # Unexpected error
             if type is transmissionrpc.TransmissionError:
                 if e.original:
                     if e.original.code is 401:
-                        message = _(9002) # Invalid auth
+                        message = _(32902) # Invalid auth
                     else:
-                        message = _(9001) # Unable to connect
-                if xbmcgui.Dialog().yesno(_(2), message, _(3)):
+                        message = _(32901) # Unable to connect
+                if xbmcgui.Dialog().yesno(_(32002), message, _(32003)):
                     __settings__.openSettings()
             elif type is ValueError:
                 # In python 2.4, urllib2.HTTPDigestAuthHandler will barf up a lung
                 # if auth fails and the server wants non-digest authentication
-                message = _(9002) # Invalid auth
-                if xbmcgui.Dialog().yesno(_(2), message, _(3)):
+                message = _(32902) # Invalid auth
+                if xbmcgui.Dialog().yesno(_(32002), message, _(32003)):
                     __settings__.openSettings()
             else:
-                message = _(9000) # Unexpected error
-                xbmcgui.Dialog().ok(_(2), message)
+                message = _(32900) # Unexpected error
+                xbmcgui.Dialog().ok(_(32002), message)
             return False
         self.updateTorrents()
         p.close()
@@ -110,17 +110,17 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
         if (controlID == 111):
             # Add torrent
             engines = [
-                (_(200), None),
-                (_(202), search.TPB),
-                (_(203), search.Mininova),
-                (_(204), search.Kickass),
+                (_(32200), None),
+                (_(32202), search.TPB),
+                (_(32203), search.Mininova),
+                (_(32204), search.Kickass),
             ]
-            selected = xbmcgui.Dialog().select(_(0), [i[0] for i in engines])
+            selected = xbmcgui.Dialog().select(_(32000), [i[0] for i in engines])
             if selected < 0:
                 return
             engine = engines[selected][1]
             if not engine:
-                filename = xbmcgui.Dialog().browse(1, _(0), 'files', '.torrent')
+                filename = xbmcgui.Dialog().browse(1, _(32000), 'files', '.torrent')
                 try:
                     f = open(filename, 'r')
                     data = base64.b64encode(f.read())
@@ -134,30 +134,30 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                     return
                 terms = kb.getText()
                 p = xbmcgui.DialogProgress()
-                p.create(_(0), _(290))
+                p.create(_(32000), _(32290))
                 try:
                     results = engine().search(terms)
                 except:
                     p.close()
-                    xbmcgui.Dialog().ok(_(0), _(292))
+                    xbmcgui.Dialog().ok(_(32000), _(32292))
                     return
                 p.close()
                 if not results:
-                    xbmcgui.Dialog().ok(_(0), _(291))
+                    xbmcgui.Dialog().ok(_(32000), _(32291))
                     return
-                selected = xbmcgui.Dialog().select(_(0), ['[S:%d L:%d] %s' % (t['seeds'], t['leechers'], t['name']) for t in results])
+                selected = xbmcgui.Dialog().select(_(32000), ['[S:%d L:%d] %s' % (t['seeds'], t['leechers'], t['name']) for t in results])
                 if selected < 0:
                     return
                 try:
                     self.transmission.add_torrent(results[selected]['url'])
                 except:
-                    xbmcgui.Dialog().ok(_(0), _(293))
+                    xbmcgui.Dialog().ok(_(32000), _(32293))
                     return
         if (controlID == 112):
             # Remove selected torrent
             item = list.getSelectedItem()
-            if item and xbmcgui.Dialog().yesno(_(0), 'Remove \'%s\'?' % self.torrents[int(item.getProperty('TorrentID'))].name):
-                remove_data = xbmcgui.Dialog().yesno(_(0), 'Remove data as well?')
+            if item and xbmcgui.Dialog().yesno(_(32000), 'Remove \'%s\'?' % self.torrents[int(item.getProperty('TorrentID'))].name):
+                remove_data = xbmcgui.Dialog().yesno(_(32000), 'Remove data as well?')
                 self.transmission.remove(int(item.getProperty('TorrentID')), remove_data)
         if (controlID == 113):
             # Stop selected torrent
@@ -183,20 +183,20 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
             prev_settings = common.get_settings()
             __settings__.openSettings()
             p = xbmcgui.DialogProgress()
-            p.create(_(0), _(1)) # 'Transmission', 'Connecting to Transmission'
+            p.create(_(32000), _(32001)) # 'Transmission', 'Connecting to Transmission'
             try:
                 self.transmission = common.get_rpc_client()
                 self.updateTorrents()
                 p.close()
             except:
                 p.close()
-                xbmcgui.Dialog().ok(_(2), _(9001))
+                xbmcgui.Dialog().ok(_(32002), _(32901))
                 # restore settings
                 self.set_settings(prev_settings)
                 try:
                     self.transmission = common.get_rpc_client()
                 except err:
-                    xbmcgui.Dialog().ok(_(2), _(9001))
+                    xbmcgui.Dialog().ok(_(32002), _(32901))
                     self.close()
         if (controlID == 120):
             # A torrent was chosen, show details

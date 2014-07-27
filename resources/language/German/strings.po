@@ -32,152 +32,152 @@ msgstr ""
 "eingesehen werden. Weitere Features könnten in kommenden Versionen "
 "implementiert werden."
 
-msgctxt "#0"
+msgctxt "#32000"
 msgid "Transmission"
 msgstr "Transmission"
 
-msgctxt "#1"
+msgctxt "#32001"
 msgid "Connecting to Transmission"
 msgstr "Stelle Verbindung zu Transmission her"
 
-msgctxt "#2"
+msgctxt "#32002"
 msgid "Transmission Error"
 msgstr "Transmission Fehler"
 
-msgctxt "#3"
+msgctxt "#32003"
 msgid "Open settings dialog?"
 msgstr "Einstellungen öffnen?"
 
 # Buttons
 # empty strings from id 4 to 100
-msgctxt "#101"
+msgctxt "#32101"
 msgid "Add"
 msgstr "Neu"
 
-msgctxt "#102"
+msgctxt "#32102"
 msgid "Remove"
 msgstr "Entfernen"
 
-msgctxt "#103"
+msgctxt "#32103"
 msgid "Pause"
 msgstr "Pause"
 
-msgctxt "#104"
+msgctxt "#32104"
 msgid "Start"
 msgstr "Starten"
 
-msgctxt "#105"
+msgctxt "#32105"
 msgid "Pause All"
 msgstr "Alle pausieren"
 
-msgctxt "#106"
+msgctxt "#32106"
 msgid "Start All"
 msgstr "Alle starten"
 
-msgctxt "#107"
+msgctxt "#32107"
 msgid "Exit"
 msgstr "Beenden"
 
-msgctxt "#108"
+msgctxt "#32108"
 msgid "Settings"
 msgstr "Einstellungen"
 
 # empty string with id 109
-msgctxt "#110"
+msgctxt "#32110"
 msgid "Name"
 msgstr "Name"
 
-msgctxt "#111"
+msgctxt "#32111"
 msgid "Status"
 msgstr "Status"
 
 # Adding / Search
 # empty strings from id 112 to 199
-msgctxt "#200"
+msgctxt "#32200"
 msgid "Browse for torrent file"
 msgstr "Verzeichnisse nach lokaler .torrent-Datei durchsuchen"
 
 # empty string with id 201
-msgctxt "#202"
+msgctxt "#32202"
 msgid "Search ThePirateBay"
 msgstr "ThePirateBay durchsuchen"
 
-msgctxt "#203"
+msgctxt "#32203"
 msgid "Search Mininova.org"
 msgstr "Mininova.org durchsuchen"
 
-msgctxt "#204"
+msgctxt "#32204"
 msgid "Search KickassTorrents"
 msgstr "KickassTorrents durchsuchen"
 
 # empty strings from id 205 to 289
-msgctxt "#290"
+msgctxt "#32290"
 msgid "Searching..."
 msgstr "Suche läuft..."
 
-msgctxt "#291"
+msgctxt "#32291"
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-msgctxt "#292"
+msgctxt "#32292"
 msgid "Could not connect to search site"
 msgstr "Keine Verbindung zur Suchseite"
 
-msgctxt "#293"
+msgctxt "#32293"
 msgid "Could not download torrent data"
 msgstr "Torrentdaten konnten nicht heruntergeladen werden"
 
 # Status
 # Short torrent status
 # empty strings from id 294 to 299
-msgctxt "#300"
+msgctxt "#32300"
 msgid "working"
 msgstr "aktiv"
 
-msgctxt "#301"
+msgctxt "#32301"
 msgid "seeding"
 msgstr "seeding"
 
-msgctxt "#302"
+msgctxt "#32302"
 msgid "stopped"
 msgstr "gestoppt"
 
 # Settings
 # empty strings from id 303 to 999
-msgctxt "#1000"
+msgctxt "#32800"
 msgid "RPC Settings"
 msgstr "RPC Einstellungen"
 
-msgctxt "#1001"
+msgctxt "#32801"
 msgid "Host"
 msgstr "Host"
 
-msgctxt "#1002"
+msgctxt "#32802"
 msgid "Port"
 msgstr "Port"
 
-msgctxt "#1003"
+msgctxt "#32803"
 msgid "User"
 msgstr "Nutzername"
 
-msgctxt "#1004"
+msgctxt "#32804"
 msgid "Password"
 msgstr "Passwort"
 
-msgctxt "#1005"
+msgctxt "#32805"
 msgid "Stop all torrents on video playback"
 msgstr "Alle Torrent stoppen während ein Video abgespielt wird"
 
 # Errors
 # empty strings from id 1006 to 8999
-msgctxt "#9000"
+msgctxt "#32900"
 msgid "An unexpected error occurred"
 msgstr "Leider ist ein Fehler aufgetreten"
 
-msgctxt "#9001"
+msgctxt "#32901"
 msgid "Could not connect to Transmission"
 msgstr "Konnte nicht mit Transmission verbinden"
 
-msgctxt "#9002"
+msgctxt "#32902"
 msgid "Invalid username or password"
 msgstr "Ungültiger Nutzername oder ungültiges Passwort"

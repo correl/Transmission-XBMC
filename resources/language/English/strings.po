@@ -25,160 +25,160 @@ msgctxt "Addon Description"
 msgid "Currently, Transmission-XBMC supports viewing, adding, removing, starting and stopping torrents. More advanced features may be added in future releases."
 msgstr ""
 
-msgctxt "#0"
+msgctxt "#32000"
 msgid "Transmission"
 msgstr ""
 
-msgctxt "#1"
+msgctxt "#32001"
 msgid "Connecting to Transmission"
 msgstr ""
 
-msgctxt "#2"
+msgctxt "#32002"
 msgid "Transmission Error"
 msgstr ""
 
-msgctxt "#3"
+msgctxt "#32003"
 msgid "Open settings dialog?"
 msgstr ""
 
 #Buttons
-#empty strings from id 4 to 100
+#empty strings from id 32004 to 32100
 
-msgctxt "#101"
+msgctxt "#32101"
 msgid "Add"
 msgstr ""
 
-msgctxt "#102"
+msgctxt "#32102"
 msgid "Remove"
 msgstr ""
 
-msgctxt "#103"
+msgctxt "#32103"
 msgid "Pause"
 msgstr ""
 
-msgctxt "#104"
+msgctxt "#32104"
 msgid "Start"
 msgstr ""
 
-msgctxt "#105"
+msgctxt "#32105"
 msgid "Pause All"
 msgstr ""
 
-msgctxt "#106"
+msgctxt "#32106"
 msgid "Start All"
 msgstr ""
 
-msgctxt "#107"
+msgctxt "#32107"
 msgid "Exit"
 msgstr ""
 
-msgctxt "#108"
+msgctxt "#32108"
 msgid "Settings"
 msgstr ""
 
-#empty string with id 109
+#empty string with id 32109
 
-msgctxt "#110"
+msgctxt "#32110"
 msgid "Name"
 msgstr ""
 
-msgctxt "#111"
+msgctxt "#32111"
 msgid "Status"
 msgstr ""
 
 #Adding / Search
-#empty strings from id 112 to 199
+#empty strings from id 32112 to 32199
 
-msgctxt "#200"
+msgctxt "#32200"
 msgid "Browse for torrent file"
 msgstr ""
 
-#empty string with id 201
+#empty string with id 32201
 
-msgctxt "#202"
+msgctxt "#32202"
 msgid "Search ThePirateBay"
 msgstr ""
 
-msgctxt "#203"
+msgctxt "#32203"
 msgid "Search Mininova.org"
 msgstr ""
 
-msgctxt "#204"
+msgctxt "#32204"
 msgid "Search KickassTorrents"
 msgstr ""
 
-#empty strings from id 205 to 289
+#empty strings from id 32205 to 32289
 
-msgctxt "#290"
+msgctxt "#32290"
 msgid "Searching..."
 msgstr ""
 
-msgctxt "#291"
+msgctxt "#32291"
 msgid "No results found"
 msgstr ""
 
-msgctxt "#292"
+msgctxt "#32292"
 msgid "Could not connect to search site"
 msgstr ""
 
-msgctxt "#293"
+msgctxt "#32293"
 msgid "Could not download torrent data"
 msgstr ""
 
 #Status
 #Short torrent status
-#empty strings from id 294 to 299
+#empty strings from id 32294 to 32299
 
-msgctxt "#300"
+msgctxt "#32300"
 msgid "working"
 msgstr ""
 
-msgctxt "#301"
+msgctxt "#32301"
 msgid "seeding"
 msgstr ""
 
-msgctxt "#302"
+msgctxt "#32302"
 msgid "stopped"
 msgstr ""
 
 #Settings
-#empty strings from id 303 to 999
+#empty strings from id 32303 to 32799
 
-msgctxt "#1000"
+msgctxt "#32800"
 msgid "RPC Settings"
 msgstr ""
 
-msgctxt "#1001"
+msgctxt "#32801"
 msgid "Host"
 msgstr ""
 
-msgctxt "#1002"
+msgctxt "#32802"
 msgid "Port"
 msgstr ""
 
-msgctxt "#1003"
+msgctxt "#32803"
 msgid "User"
 msgstr ""
 
-msgctxt "#1004"
+msgctxt "#32804"
 msgid "Password"
 msgstr ""
 
-msgctxt "#1005"
+msgctxt "#32805"
 msgid "Stop all torrents on video playback"
 msgstr ""
 
 #Errors
-#empty strings from id 1006 to 8999
+#empty strings from id 32806 to 32899
 
-msgctxt "#9000"
+msgctxt "#32900"
 msgid "An unexpected error occurred"
 msgstr ""
 
-msgctxt "#9001"
+msgctxt "#32901"
 msgid "Could not connect to Transmission"
 msgstr ""
 
-msgctxt "#9002"
+msgctxt "#32902"
 msgid "Invalid username or password"
 msgstr ""
