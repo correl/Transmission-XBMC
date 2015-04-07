@@ -110,7 +110,19 @@ msgctxt "#32204"
 msgid "Search KickassTorrents"
 msgstr "KickassTorrents durchsuchen"
 
-# empty strings from id 205 to 289
+msgctxt "#32205"
+msgid "Search 1337x"
+msgstr "1337x durchsuchen"
+
+msgctxt "#32206"
+msgid "Search YTS"
+msgstr "YTS durchsuchen"
+
+msgctxt "#32207"
+msgid "Search LimeTorrents"
+msgstr "LimeTorrents durchsuchen"
+
+# empty strings from id 208 to 289
 msgctxt "#32290"
 msgid "Searching..."
 msgstr "Suche läuft..."
