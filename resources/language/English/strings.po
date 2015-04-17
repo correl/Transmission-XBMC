@@ -123,7 +123,11 @@ msgctxt "#32207"
 msgid "Search LimeTorrents"
 msgstr ""
 
-#empty strings from id 32208 to 32289
+msgctxt "#32208"
+msgid "Search EZTV"
+msgstr ""
+
+#empty strings from id 32209 to 32289
 
 msgctxt "#32290"
 msgid "Searching..."

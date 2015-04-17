@@ -2,7 +2,7 @@ import sys
 import re
 import socket
 from urllib2 import urlopen, Request, URLError, HTTPError
-from urllib import quote, quote_plus
+from urllib import quote, quote_plus, urlencode
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
 
 socket.setdefaulttimeout(15)
@@ -152,9 +152,41 @@ class Lime(Search):
                 'leechers': int(leechers)
             })
         return torrents
+class EZTV(Search):
+    def __init__(self):
+        self.user_agent = 'Mozilla/5.0'
+        self.uri_prefix = 'https://eztv.ch'
+        self.search_uri = self.uri_prefix + '/search/'
+    def search(self, terms):
+        torrents = []
+        data = {'SearchString': '', 'SearchString1': terms, 'search': 'Search'}
+        req = Request(self.search_uri, urlencode(data))
+        req.add_header('User-Agent', self.user_agent)
+        f = urlopen(req)
+        soup = BeautifulStoneSoup(f.read())
+        for (c, item) in enumerate(soup.findAll('a', {'class': 'magnet'})):
+            if c == 30: break
+            info = item.findPrevious('a')
+            link = self.uri_prefix + info['href']
+            item_req = Request(link)
+            item_req.add_header('User-Agent', self.user_agent)
+            item_f = urlopen(item_req)
+            item_soup = BeautifulStoneSoup(item_f.read())
+            sp = item_soup.findAll('span', {'class': re.compile('^stat_')})
+            if sp:
+                sp = [int(i.text.replace(',', '')) for i in sp]
+            else:
+                sp = [0, 0]
+            torrents.append({
+                'url': item['href'],
+                'name': info.text,
+                'seeds': sp[0],
+                'leechers': sp[1]
+            })
+        return torrents
 
 if __name__ == '__main__':
-    sites = [Mininova(), TPB(), Kickass(), L337x(), YTS(), Lime()]
+    sites = [Mininova(), TPB(), Kickass(), L337x(), YTS(), Lime(), EZTV()]
     terms = 'transmission'
     if len(sys.argv) > 1:
         terms = sys.argv[1]
@@ -165,6 +197,6 @@ if __name__ == '__main__':
         print 'Total found = ' + str(len(torrents))
         for counter, file in enumerate(torrents):
             print '[{:3},{:3}] {:33} "{:33}"'.format(file['seeds'], file['leechers'],
-                                                     file['name'][:33], file['url'][:33])
-            if counter == 4:
-                break
+                                                     file['name'].encode('ascii', 'replace')[:33],
+                                                     file['url'][:33])
+            if counter == 9: break

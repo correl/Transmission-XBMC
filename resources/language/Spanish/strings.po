@@ -109,6 +109,10 @@ msgctxt "#32207"
 msgid "Search LimeTorrents"
 msgstr "Buscar en LimeTorrents"
 
+msgctxt "#32208"
+msgid "Search EZTV"
+msgstr "Buscar en EZTV"
+
 msgctxt "#32290"
 msgid "Searching..."
 msgstr "Buscando..."
