@@ -111,7 +111,23 @@ msgctxt "#32204"
 msgid "Search KickassTorrents"
 msgstr ""
 
-#empty strings from id 32205 to 32289
+msgctxt "#32205"
+msgid "Search 1337x"
+msgstr ""
+
+msgctxt "#32206"
+msgid "Search YTS"
+msgstr ""
+
+msgctxt "#32207"
+msgid "Search LimeTorrents"
+msgstr ""
+
+msgctxt "#32208"
+msgid "Search EZTV"
+msgstr ""
+
+#empty strings from id 32209 to 32289
 
 msgctxt "#32290"
 msgid "Searching..."

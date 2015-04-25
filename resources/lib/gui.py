@@ -114,6 +114,10 @@ class TransmissionGUI(xbmcgui.WindowXMLDialog):
                 (_(32202), search.TPB),
                 (_(32203), search.Mininova),
                 (_(32204), search.Kickass),
+                (_(32205), search.L337x),
+                (_(32206), search.YTS),
+                (_(32207), search.Lime),
+                (_(32208), search.EZTV),
             ]
             selected = xbmcgui.Dialog().select(_(32000), [i[0] for i in engines])
             if selected < 0:

@@ -97,6 +97,22 @@ msgctxt "#32204"
 msgid "Search KickassTorrents"
 msgstr ""
 
+msgctxt "#32205"
+msgid "Search 1337x"
+msgstr ""
+
+msgctxt "#32206"
+msgid "Search YTS"
+msgstr ""
+
+msgctxt "#32207"
+msgid "Search LimeTorrents"
+msgstr ""
+
+msgctxt "#32208"
+msgid "Search EZTV"
+msgstr ""
+
 msgctxt "#32290"
 msgid "Searching..."
 msgstr ""
